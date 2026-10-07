@@ -46,7 +46,7 @@
     white-space:normal!important;
   }
 
-  /* Footer nav stays centered on one line */
+  /* Footer nav stays centered on one line, with slightly stronger type */
   .site-footer .footer-nav{
     width:100%!important;
     display:flex!important;
@@ -56,7 +56,7 @@
     gap:11px!important;
   }
   .site-footer .footer-nav a{
-    font-size:12px!important;
+    font-size:14px!important;
     white-space:nowrap!important;
   }
 
@@ -72,8 +72,13 @@
     white-space:nowrap!important;
   }
   .site-footer .footer-bottom span:last-child{
-    font-size:8.5px!important;
+    display:block!important;
+    width:min(100%,340px)!important;
+    margin:0 auto!important;
+    font-size:10.5px!important;
+    line-height:1.45!important;
     letter-spacing:.045em!important;
-    white-space:nowrap!important;
+    white-space:normal!important;
+    text-align:center!important;
   }
 }
