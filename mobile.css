@@ -6,7 +6,7 @@
     position:relative!important;
     inset:auto!important;
     background:var(--navy950)!important;
-    border-bottom:1px solid rgba(255,255,255,.09)!important;
+    border-bottom:1px solid rgba(184,115,51,.78)!important;
     backdrop-filter:none!important;
   }
   .site-header .nav-shell{
