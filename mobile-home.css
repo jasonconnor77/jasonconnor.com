@@ -1,0 +1,79 @@
+@media (max-width:720px){
+  /* HOME MOBILE FINAL OVERRIDES */
+  .site-header .brand-monogram{
+    width:44px!important;
+    height:44px!important;
+    flex:0 0 44px!important;
+    border:0!important;
+    font-size:0!important;
+    background:url('assets/jc-logo-bronze-96.png?v=2') center/contain no-repeat!important;
+  }
+
+  /* Slightly stronger mobile metric labels */
+  .section.navy .metric-row .metric-no{
+    font-size:13px!important;
+    line-height:1.2!important;
+  }
+
+  /* Main home CTAs */
+  .section.navy>.container>.hero-actions,
+  .section.paper>.container>.hero-actions{
+    width:100%!important;
+    justify-content:center!important;
+  }
+  .section.navy>.container>.hero-actions .button,
+  .section.paper>.container>.hero-actions .button{
+    min-width:236px!important;
+    min-height:54px!important;
+    padding:0 20px!important;
+    font-size:14px!important;
+    line-height:1.2!important;
+    text-align:center!important;
+  }
+
+  /* Systems CTA: two clean lines and centered */
+  .systems-band .systems-copy .hero-actions{
+    width:100%!important;
+    justify-content:center!important;
+  }
+  .systems-band .systems-copy .button{
+    width:236px!important;
+    min-height:56px!important;
+    padding:0 18px!important;
+    font-size:14px!important;
+    line-height:1.18!important;
+    text-align:center!important;
+    white-space:normal!important;
+  }
+
+  /* Footer nav stays centered on one line */
+  .site-footer .footer-nav{
+    width:100%!important;
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    justify-content:center!important;
+    align-items:center!important;
+    gap:11px!important;
+  }
+  .site-footer .footer-nav a{
+    font-size:12px!important;
+    white-space:nowrap!important;
+  }
+
+  .site-footer .footer-bottom{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    gap:12px!important;
+    text-align:center!important;
+  }
+  .site-footer .footer-bottom span:first-child{
+    font-size:11px!important;
+    white-space:nowrap!important;
+  }
+  .site-footer .footer-bottom span:last-child{
+    font-size:8.5px!important;
+    letter-spacing:.045em!important;
+    white-space:nowrap!important;
+  }
+}
