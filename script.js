@@ -44,6 +44,7 @@
     .hero-foot{margin-top:34px!important;padding-top:22px!important}
     .hero-foot strong{font-size:30px!important;line-height:1!important}
     .hero-foot span{font-size:12px!important;line-height:1.35!important;font-weight:600!important;color:rgba(255,255,255,.68)!important}
+    .hero-foot div:nth-child(3) span{text-transform:none!important}
 
     /* Keep impact values on one line */
     .metric-row{grid-template-columns:180px minmax(360px,390px) 1fr}
@@ -168,4 +169,7 @@
 
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
+
+  const skuLabel = document.querySelector('.hero-foot div:nth-child(3) span');
+  if (skuLabel) skuLabel.textContent = 'SKUs STABILIZED';
 })();
