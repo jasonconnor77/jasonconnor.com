@@ -30,9 +30,6 @@
     .flow-box{border:0!important;background:transparent!important;padding:0!important}
     .flow-final{border:0!important;border-top:1px solid rgba(184,115,51,.65)!important;background:transparent!important;padding:20px 0 0!important;margin-top:4px}
 
-    .scroll-cue{position:absolute;z-index:5;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.62);font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;pointer-events:none}
-    .scroll-cue:after{content:'↓';color:var(--copper2);font-size:15px;line-height:1}
-
     @media(min-width:721px){
       .hero{min-height:680px}
       .hero-grid{min-height:680px;grid-template-columns:minmax(0,1.22fr) minmax(300px,.58fr);gap:64px}
@@ -60,18 +57,9 @@
       .footer-top{grid-template-columns:1fr;gap:30px}
       .footer-title{font-size:30px}
       .footer-nav{justify-content:flex-start;gap:14px 22px}
-      .scroll-cue{bottom:10px;font-size:9px}
     }
   `;
   document.head.appendChild(polish);
-
-  const hero = document.querySelector('.hero');
-  if (hero && !hero.querySelector('.scroll-cue')) {
-    const cue = document.createElement('div');
-    cue.className = 'scroll-cue';
-    cue.textContent = 'Explore';
-    hero.appendChild(cue);
-  }
 
   const header = document.querySelector('.site-header');
   const menuButton = document.querySelector('.menu-toggle');
@@ -107,38 +95,4 @@
 
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
-
-  const form = document.querySelector('[data-contact-form]');
-  const status = document.querySelector('[data-form-status]');
-  form?.addEventListener('submit', event => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const name = String(data.get('name') || '').trim();
-    const company = String(data.get('company') || '').trim();
-    const subjectChoice = String(data.get('subject') || 'Website inquiry').trim();
-    const message = String(data.get('message') || '').trim();
-    const reply = String(data.get('reply') || '').trim();
-
-    if (!name || !message || !reply) {
-      status.style.display = 'block';
-      status.textContent = 'Please complete your name, reply email, and message.';
-      return;
-    }
-
-    const user = 'jason';
-    const host = 'jasonconnor.com';
-    const address = `${user}@${host}`;
-    const subject = `Website: ${subjectChoice}`;
-    const body = [
-      `Name: ${name}`,
-      company ? `Company: ${company}` : '',
-      `Reply email: ${reply}`,
-      '',
-      message
-    ].filter(Boolean).join('\n');
-
-    status.style.display = 'block';
-    status.textContent = 'Opening your email application with the message prepared.';
-    window.location.href = `mailto:${address}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
 })();
