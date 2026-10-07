@@ -19,6 +19,75 @@
     color:var(--copper2)!important;
   }
 
+  /* SYSTEMS HERO TAGS: larger and centered. */
+  .page-hero .systems-meta{
+    width:100%!important;
+    display:flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+    gap:16px!important;
+    margin-top:30px!important;
+    overflow:visible!important;
+  }
+  .page-hero .systems-meta span{
+    font-size:12.5px!important;
+    line-height:1.2!important;
+    font-weight:600!important;
+    letter-spacing:.05em!important;
+    color:var(--copper2)!important;
+  }
+
+  /* SYSTEMS > TECHNOLOGY: clean two-card treatment, no decorative arrow. */
+  .technology-pair{
+    margin-top:26px!important;
+    border:0!important;
+  }
+  .technology-pair .flow-row{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+    padding:0!important;
+    border:0!important;
+  }
+  .technology-pair .flow-box{
+    padding:22px 20px!important;
+    border:1px solid var(--line)!important;
+    background:#fff!important;
+    color:var(--ink)!important;
+  }
+  .technology-pair .flow-box strong{
+    color:var(--navy)!important;
+    font-size:20px!important;
+    line-height:1.2!important;
+  }
+  .technology-pair .flow-box span{
+    margin-top:8px!important;
+    color:var(--muted)!important;
+    font-size:16px!important;
+    line-height:1.4!important;
+  }
+  .technology-note{
+    margin-top:18px!important;
+    padding:22px 20px!important;
+    border:1px solid #decbb8!important;
+    background:#EFE8DF!important;
+  }
+  .technology-note strong{
+    display:block!important;
+    color:var(--navy)!important;
+    font-size:19px!important;
+    line-height:1.25!important;
+    font-weight:760!important;
+    text-transform:none!important;
+  }
+  .technology-note span{
+    display:block!important;
+    margin-top:8px!important;
+    color:var(--muted)!important;
+    font-size:15.5px!important;
+    line-height:1.5!important;
+  }
+
   /* EXPERIENCE: employer is the primary identifier; role is secondary. */
   .experience-block .company-name{
     font-size:30px!important;
