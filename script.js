@@ -26,7 +26,8 @@
     .timeline-item .years,
     .role-head span,
     .case-company,
-    .section-intro .eyebrow{
+    .section-intro .eyebrow,
+    .contact-copy>.eyebrow{
       font:600 14px/1.25 'IBM Plex Mono',monospace!important;
       letter-spacing:.07em!important;
       color:var(--copper)!important;
@@ -185,7 +186,7 @@
       .page-hero{padding:104px 0 46px}
       .page-hero .h1{font-size:clamp(36px,10vw,48px)}
       .page-hero .lead{font-size:16px}
-      .philosophy-number,.metric-no,.capability .num,.principle .num,.system-section .eyebrow,.timeline-item .years,.role-head span,.case-company,.section-intro .eyebrow{font-size:13px!important}
+      .philosophy-number,.metric-no,.capability .num,.principle .num,.system-section .eyebrow,.timeline-item .years,.role-head span,.case-company,.section-intro .eyebrow,.contact-copy>.eyebrow{font-size:13px!important}
       .question-row>span:first-child,.question-row>span:last-child{font-size:12px!important}
       .impact-meta span{font-size:14px!important}
       .metric-value{font-size:clamp(42px,12vw,56px);white-space:nowrap}
