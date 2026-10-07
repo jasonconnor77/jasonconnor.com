@@ -1,0 +1,107 @@
+/* Desktop refinement pass — 2026-10-07 */
+
+/* Header logo: guarantee the JC mark has real space and is visible. */
+.site-header .brand-monogram{
+  display:block!important;
+  flex:0 0 58px!important;
+  width:58px!important;
+  height:58px!important;
+  min-width:58px!important;
+  min-height:58px!important;
+  border:0!important;
+  font-size:0!important;
+  background:url('assets/jc-logo-bronze-96.png') center/contain no-repeat!important;
+}
+.site-header .brand-monogram:after{display:none!important}
+
+/* Home-page CTAs should share one typographic scale. */
+main>.section .hero-actions .button,
+.systems-band .hero-actions .button{
+  font-family:'Archivo',Arial,sans-serif!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  line-height:1!important;
+}
+
+/* Experience cards: true equal-height 2x2 groups. */
+.role-results{
+  grid-auto-rows:1fr!important;
+  align-items:stretch!important;
+}
+.role-result{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  height:100%!important;
+  min-height:126px!important;
+}
+.role-head>span{
+  font-size:15px!important;
+  line-height:1.25!important;
+}
+
+/* Systems > Technology: desktop-safe light-surface treatment. */
+.system-section .flow{
+  border-top:1px solid var(--line)!important;
+}
+.system-section .flow-row{
+  border-bottom:1px solid var(--line)!important;
+}
+.system-section .flow-box{
+  padding:22px!important;
+  border:1px solid var(--line)!important;
+  background:#fff!important;
+  color:var(--ink)!important;
+}
+.system-section .flow-box strong{
+  color:var(--navy)!important;
+  font-size:19px!important;
+  line-height:1.25!important;
+}
+.system-section .flow-box span{
+  color:var(--muted)!important;
+  font-size:15px!important;
+  line-height:1.45!important;
+}
+.system-section .flow-arrow{
+  color:var(--copper)!important;
+}
+.system-section .flow-final{
+  margin-top:16px!important;
+  padding:22px!important;
+  border:1px solid #decbb8!important;
+  border-top:1px solid #decbb8!important;
+  background:#EFE8DF!important;
+  color:var(--navy)!important;
+}
+.system-section .flow-final strong{
+  color:var(--navy)!important;
+  font-size:19px!important;
+  line-height:1.3!important;
+}
+.system-section .flow-final span{
+  color:var(--muted)!important;
+  font-size:15px!important;
+  line-height:1.45!important;
+}
+
+/* Contact field labels: readable, intentional, still restrained. */
+.contact-form .field label{
+  font:600 12px/1.25 'IBM Plex Mono',monospace!important;
+  letter-spacing:.07em!important;
+  color:var(--navy)!important;
+  margin-bottom:10px!important;
+}
+
+@media(max-width:720px){
+  .site-header .brand-monogram{
+    flex-basis:44px!important;
+    width:44px!important;
+    height:44px!important;
+    min-width:44px!important;
+    min-height:44px!important;
+  }
+  .role-result{min-height:0!important}
+  .role-head>span{font-size:12px!important}
+  .contact-form .field label{font-size:11.5px!important}
+}
