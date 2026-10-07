@@ -13,6 +13,16 @@
     }
     .brand-monogram:after{display:none!important}
 
+    /* Brand descriptor */
+    .brand-text span{
+      font-size:11px!important;
+      line-height:1.25!important;
+      letter-spacing:.055em!important;
+      text-transform:none!important;
+      color:rgba(255,255,255,.68)!important;
+      white-space:nowrap;
+    }
+
     /* Remove small templated labels above page heroes */
     .page-hero>.container>.eyebrow,
     .hero-copy>.eyebrow{display:none!important}
@@ -33,6 +43,14 @@
       color:var(--copper)!important;
     }
     .section-intro .eyebrow.light{color:var(--copper2)!important}
+
+    /* Light bronze for labels sitting on dark/navy fields */
+    .navy .metric-no,
+    .systems-band .eyebrow,
+    .site-footer .eyebrow.light{
+      color:var(--copper2)!important;
+    }
+
     .question-row>span:first-child{
       font:600 14px/1.25 'IBM Plex Mono',monospace!important;
       color:var(--copper)!important;
@@ -41,8 +59,15 @@
       font:600 13px/1.25 'IBM Plex Mono',monospace!important;
       letter-spacing:.07em!important;
     }
-    .page-meta{font-size:12px!important;font-weight:500!important}
-    .impact-meta span{font-size:15px!important;font-weight:600!important;color:var(--copper2)!important;letter-spacing:.08em!important}
+
+    /* Page-meta rows should carry the same visual weight as Impact */
+    .page-meta{margin-top:28px!important}
+    .page-meta span{
+      font-size:15px!important;
+      font-weight:600!important;
+      color:var(--copper2)!important;
+      letter-spacing:.08em!important;
+    }
 
     /* Hero proof strip */
     .hero-foot{margin-top:34px!important;padding-top:22px!important}
@@ -50,12 +75,21 @@
     .hero-foot span{font-size:12px!important;line-height:1.35!important;font-weight:600!important;color:rgba(255,255,255,.68)!important}
     .hero-foot div:nth-child(3) span{text-transform:none!important}
 
-    /* Selected Work must carry the same visual weight as the rest of the site */
-    .case{padding:42px!important}
+    /* Selected Work */
+    .case-grid{
+      grid-auto-rows:1fr!important;
+      align-items:stretch!important;
+    }
+    .case{
+      padding:42px!important;
+      display:flex!important;
+      flex-direction:column!important;
+      height:100%!important;
+    }
     .case h3{font-size:34px!important;line-height:1.08!important;margin:24px 0 16px!important}
     .case>p{font-size:18px!important;line-height:1.55!important;color:#495864!important;margin:0!important}
     .case-result{
-      margin-top:28px!important;
+      margin-top:auto!important;
       padding-top:22px!important;
       font-family:'Archivo',Arial,sans-serif!important;
       font-size:17px!important;
@@ -75,11 +109,10 @@
     .metric-row{grid-template-columns:180px minmax(360px,390px) 1fr}
     .metric-value{white-space:nowrap}
 
-    /* Interior page scale — Experience remains benchmark */
+    /* Interior page scale */
     .page-hero{padding:132px 0 58px}
     .page-hero .h1{font-size:clamp(40px,4.4vw,64px);max-width:930px}
     .page-hero .lead{font-size:clamp(17px,1.5vw,21px);margin-top:20px}
-    .page-meta{margin-top:28px}
 
     /* Experience: compact continuous flow */
     .experience-block{gap:52px!important;padding:26px 0!important}
@@ -102,9 +135,16 @@
 
     /* Footer */
     .footer-top{grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:end;padding-bottom:38px}
+    .site-footer .eyebrow.light{
+      font:600 14px/1.25 'IBM Plex Mono',monospace!important;
+      letter-spacing:.07em!important;
+      margin-bottom:18px!important;
+    }
     .footer-title{font-size:clamp(28px,3vw,44px);max-width:760px}
     .footer-nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px 24px}
-    .footer-nav a{font-size:13px}
+    .footer-nav a{font-size:15px!important}
+    .footer-bottom{font-size:13px!important}
+    .footer-bottom span{font-size:13px!important}
 
     /* Systems & Tools: same typography strength as the rest of the homepage */
     .systems-layout{grid-template-columns:.9fr 1.1fr!important;gap:72px!important}
@@ -145,7 +185,7 @@
     .flow-arrow{font-size:18px!important;color:var(--copper2)!important}
     .flow-final{
       border:0!important;
-      border-top:1px solid rgba(184,115,51,.7)!important;
+      border-top:1px solid rgba(217,175,136,.72)!important;
       background:transparent!important;
       padding:26px 0 0!important;
       margin-top:0!important;
@@ -179,21 +219,24 @@
       .footer-top{grid-template-columns:1fr;align-items:start}
       .footer-nav{justify-content:flex-start}
       .systems-layout{grid-template-columns:1fr!important;gap:48px!important}
+      .brand-text span{font-size:9px!important}
     }
 
     @media(max-width:720px){
       .brand-monogram{width:48px!important;height:48px!important}
+      .brand-text span{font-size:8.5px!important;white-space:normal;max-width:225px}
       .page-hero{padding:104px 0 46px}
       .page-hero .h1{font-size:clamp(36px,10vw,48px)}
       .page-hero .lead{font-size:16px}
-      .philosophy-number,.metric-no,.capability .num,.principle .num,.system-section .eyebrow,.timeline-item .years,.role-head span,.case-company,.section-intro .eyebrow,.contact-copy>.eyebrow{font-size:13px!important}
+      .philosophy-number,.metric-no,.capability .num,.principle .num,.system-section .eyebrow,.timeline-item .years,.role-head span,.case-company,.section-intro .eyebrow,.contact-copy>.eyebrow,.site-footer .eyebrow.light{font-size:13px!important}
       .question-row>span:first-child,.question-row>span:last-child{font-size:12px!important}
-      .impact-meta span{font-size:14px!important}
+      .page-meta span{font-size:14px!important}
       .metric-value{font-size:clamp(42px,12vw,56px);white-space:nowrap}
-      .case{padding:28px 24px!important}
+      .case-grid{grid-auto-rows:auto!important}
+      .case{padding:28px 24px!important;height:auto!important}
       .case h3{font-size:29px!important}
       .case>p{font-size:17px!important}
-      .case-result{font-size:16px!important}
+      .case-result{margin-top:28px!important;font-size:16px!important}
       .case-result strong{font-size:34px!important}
       .experience-block{padding:20px 0!important;gap:22px!important}
       .role{padding-bottom:12px!important}
@@ -205,6 +248,8 @@
       .footer-top{grid-template-columns:1fr;gap:30px}
       .footer-title{font-size:30px}
       .footer-nav{justify-content:flex-start;gap:14px 22px}
+      .footer-nav a{font-size:14px!important}
+      .footer-bottom,.footer-bottom span{font-size:12px!important}
       .systems-layout{grid-template-columns:1fr!important;gap:40px!important}
       .systems-copy>p{font-size:17px!important}
       .flow-row{grid-template-columns:1fr!important;padding:22px 0!important;gap:16px!important}
@@ -220,6 +265,10 @@
     }
   `;
   document.head.appendChild(polish);
+
+  /* Honor site preference: no pinch zoom. */
+  const viewport = document.querySelector('meta[name="viewport"]');
+  if (viewport) viewport.setAttribute('content', 'width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no');
 
   const header = document.querySelector('.site-header');
   const menuButton = document.querySelector('.menu-toggle');
@@ -243,6 +292,22 @@
     document.body.classList.remove('menu-open');
   }));
 
+  /* Header/footer navigation should always open the destination at the top. */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const forceTop = sessionStorage.getItem('jcForceTop') === '1';
+  if (forceTop) {
+    sessionStorage.removeItem('jcForceTop');
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => window.scrollTo(0, 0));
+    setTimeout(() => window.scrollTo(0, 0), 0);
+  }
+  window.addEventListener('pageshow', () => {
+    if (forceTop) window.scrollTo(0, 0);
+  });
+  document.querySelectorAll('.site-header a, .site-footer a').forEach(link => {
+    link.addEventListener('click', () => sessionStorage.setItem('jcForceTop', '1'));
+  });
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -255,6 +320,22 @@
 
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
+
+  /* Site-wide brand descriptor. */
+  const descriptor = 'Manufacturing Operations · Production Leadership · Operational Turnarounds';
+  document.querySelectorAll('.brand-text span').forEach(el => { el.textContent = descriptor; });
+  document.querySelectorAll('.footer-bottom>span:last-child').forEach(el => { el.textContent = descriptor; });
+
+  /* Keep Jason Connor attached to the footer statement on every page. */
+  document.querySelectorAll('.footer-top>div:first-child').forEach(block => {
+    let label = block.querySelector('.eyebrow');
+    if (!label) {
+      label = document.createElement('p');
+      label.className = 'eyebrow light';
+      block.prepend(label);
+    }
+    label.textContent = 'Jason Connor';
+  });
 
   const skuLabel = document.querySelector('.hero-foot div:nth-child(3) span');
   if (skuLabel) skuLabel.textContent = 'SKUs STABILIZED';
