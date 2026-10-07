@@ -19,10 +19,11 @@
     .form-status{
       display:none;
       align-items:center;
+      justify-content:center;
       gap:10px;
       min-width:0;
-      min-height:46px;
-      padding:9px 12px 9px 10px;
+      min-height:52px;
+      padding:9px 14px 9px 10px;
       border:1px solid #b9dcc7;
       border-left:4px solid #2f7d4b;
       background:#eaf5ee;
@@ -44,6 +45,15 @@
       color:#fff;
       font:800 15px/1 Arial,sans-serif;
     }
+    .status-copy{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      line-height:1.3;
+    }
+    .status-copy span+span{margin-top:2px}
     .form-status.error{
       border-color:#e2bcbc!important;
       border-left-color:#8a2f2f!important;
@@ -76,9 +86,13 @@
   document.head.appendChild(style);
 
   const showStatus = (message, isError = false) => {
-    status.textContent = message;
     status.classList.toggle('error', isError);
     status.classList.toggle('success', !isError);
+    if (isError) {
+      status.textContent = message;
+    } else {
+      status.innerHTML = '<span class="status-copy"><span>Message sent. Thank you for reaching out.</span><span>I’ll be in touch soon.</span></span>';
+    }
     status.classList.add('show');
   };
 
@@ -101,7 +115,7 @@
 
       if (!response.ok) throw new Error('Formspree submission failed');
 
-      showStatus("Message sent. Thank you for reaching out. I’ll be in touch soon.");
+      showStatus('success');
       form.reset();
     } catch (error) {
       showStatus('Message not sent. Please try again.', true);
