@@ -1,13 +1,27 @@
 @media (max-width:720px){
   /* HOME MOBILE FINAL OVERRIDES */
   .site-header .brand-monogram{
-    width:44px!important;
-    height:44px!important;
-    flex:0 0 44px!important;
+    width:56px!important;
+    height:52px!important;
+    flex:0 0 56px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
     border:0!important;
-    font-size:0!important;
-    background:url('assets/jc-logo-bronze-96.png?v=2') center/contain no-repeat!important;
+    background:none!important;
+    font-family:'Archivo',Arial,sans-serif!important;
+    font-size:48px!important;
+    font-weight:900!important;
+    font-stretch:110%!important;
+    line-height:.9!important;
+    letter-spacing:-.11em!important;
+    color:#D9AF88!important;
+    text-shadow:none!important;
   }
+  .site-header .brand-monogram:after{display:none!important}
+  .site-header .brand{gap:12px!important}
+  .site-header .brand-text{max-width:210px!important}
+  .site-header .brand .brand-text span{max-width:210px!important}
 
   /* Slightly stronger mobile metric labels */
   .section.navy .metric-row .metric-no{
