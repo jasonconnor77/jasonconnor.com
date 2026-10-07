@@ -101,7 +101,7 @@
 
       if (!response.ok) throw new Error('Formspree submission failed');
 
-      showStatus("Message sent. Thanks for reaching out. I’ll be in touch soon.");
+      showStatus("Message sent. Thank you for reaching out. I’ll be in touch soon.");
       form.reset();
     } catch (error) {
       showStatus('Message not sent. Please try again.', true);
