@@ -1,35 +1,571 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Jason Connor</title>
-<style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jason Connor | Operations Leadership. Manufacturing Excellence.</title>
+
+<meta name="description"
+content="Jason Connor is a Manufacturing Operations, Production, and Supply Chain Leader with 20+ years of experience driving operational turnarounds, schedule recovery, and team performance.">
+
+https://fonts.googleapis.com
+https://fonts.gstatic.com
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=>
+
+:root{
+    --bg:#0A0F18;
+    --card:#121926;
+    --gold:#C6A86A;
+    --white:#F6F7F9;
+    --gray:#A4AFBE;
+    --line:#233044;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-font-family:Arial,sans-serif;
-text-align:center;
-padding:100px;
-background:#0f172a;
-color:white;
+    background:var(--bg);
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    line-height:1.8;
 }
- 
-h1{
-font-size:60px;
+
+.container{
+    width:90%;
+    max-width:1300px;
+    margin:auto;
 }
- 
-h2{
-color:#cbd5e1;
+
+nav{
+    position:fixed;
+    width:100%;
+    background:rgba(10,15,24,.92);
+    backdrop-filter:blur(10px);
+    z-index:999;
+    border-bottom:1px solid rgba(255,255,255,.05);
 }
+
+nav .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+}
+
+.logo{
+    color:var(--gold);
+    letter-spacing:3px;
+    font-size:.9rem;
+    font-weight:600;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+    gap:80px;
+    align-items:center;
+}
+
+.hero-label{
+    color:var(--gold);
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:6rem;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero h2{
+    font-size:1.5rem;
+    font-weight:400;
+    color:var(--gray);
+    margin-bottom:30px;
+}
+
+.hero p{
+    color:var(--gray);
+    font-size:1.1rem;
+    max-width:700px;
+}
+
+.hero-image img{
+    width:100%;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.buttons{
+    margin-top:40px;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 30px;
+    text-decoration:none;
+    border-radius:4px;
+    margin-right:15px;
+    margin-bottom:15px;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:var(--gold);
+    color:#111;
+    font-weight:700;
+}
+
+.btn-secondary{
+    border:1px solid rgba(255,255,255,.2);
+    color:white;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+section{
+    padding:120px 0;
+}
+
+.section-header{
+    margin-bottom:70px;
+}
+
+.section-label{
+    color:var(--gold);
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+.section-header h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:4rem;
+}
+
+.metrics{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.metric{
+    background:var(--card);
+    padding:40px;
+    border:1px solid var(--line);
+}
+
+.metric-number{
+    color:var(--gold);
+    font-size:3rem;
+    font-weight:700;
+}
+
+.metric-title{
+    margin-top:10px;
+}
+
+.about{
+    max-width:850px;
+}
+
+.about p{
+    color:var(--gray);
+    margin-bottom:25px;
+}
+
+.grid-two{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:40px;
+}
+
+.card h3{
+    color:var(--gold);
+    margin-bottom:15px;
+}
+
+.card p{
+    color:var(--gray);
+}
+
+.role{
+    border-left:3px solid var(--gold);
+    padding-left:30px;
+    margin-bottom:50px;
+}
+
+.role h3{
+    font-size:1.7rem;
+}
+
+.role h4{
+    color:var(--gold);
+    margin-bottom:12px;
+}
+
+.role p{
+    color:var(--gray);
+}
+
+.quote{
+    text-align:center;
+    padding:160px 30px;
+}
+
+.quote-text{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;
+    max-width:1000px;
+    margin:auto;
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact p{
+    max-width:800px;
+    margin:auto;
+    color:var(--gray);
+}
+
+footer{
+    border-top:1px solid var(--line);
+    text-align:center;
+    padding:40px;
+    color:var(--gray);
+}
+
+@media(max-width:1000px){
+
+.hero-grid{
+    grid-template-columns:1fr;
+}
+
+.hero h1{
+    font-size:4rem;
+}
+
+.metrics{
+    grid-template-columns:1fr 1fr;
+}
+
+.grid-two{
+    grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:650px){
+
+.metrics{
+    grid-template-columns:1fr;
+}
+
+.hero h1{
+    font-size:3rem;
+}
+
+nav ul{
+    display:none;
+}
+
+}
+
 </style>
 </head>
- 
 <body>
- 
-<h1>Jason Connor</h1>
- 
-<h2>Production, Operations & Supply Chain Leader</h2>
- 
+
+<nav>
+<div class="container">
+
+<div class="logo">
+JASON CONNOR
+</div>
+
+<ul>
+<li><a href="#impact">Impact</a></li>
+<li><a href="#about">AbouthipLeadership</a></li>
+<li><a href="#career">Career</a></ntactContact</a></li>
+</ul>
+
+</div>
+</nav>
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-grid">
+
+<div>
+
+<div class="hero-label">
+Operations Leadership • Schedule Recovery • Manufacturing Excellence
+</div>
+
+<h1>
+Jason Connor
+</h1>
+
+<h2>
+Transforming Operational Challenges Into Sustainable Performance
+</h2>
+
 <p>
-My GitHub website is now working.
+Hands-on manufacturing leader with 20+ years of experience directing production, recovering schedules, improving material flow, and restoring operational control. Proven success aligning labor, capacity, inventory, suppliers, and customer demand to achieve measurable business results.
 </p>
- 
+
+<div class="buttons">
+
+Jason_Connor_Resume.pdf
+Download Resume
+</a>
+
+YOUR_LINKEDIN_URL
+Connect on LinkedIn
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+headshot.jpg
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="impact">
+
+<div class="container">
+
+<div class="section-header">
+<div class="section-label">Proven Business Impact</div>
+<h2>Results That Matter</h2>
+</div>
+
+<div class="metrics">
+
+<div class="metric">
+<div class="metric-number">2,432→30</div>
+<div class="metric-title">Past-Due Line Items Reduced</div>
+</div>
+
+<div class="metric">
+<div class="metric-number">40%</div>
+<div class="metric-title">Production Increase</div>
+</div>
+
+<div class="metric">
+<div class="metric-number">75→95%</div>
+<div class="metric-title">Supplier Delivery Performance</div>
+</div>
+
+<div class="metric">
+<div class="metric-number">99.2%</div>
+<div class="metric-title">Inventory Accuracy</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="container">
+
+<div class="section-header">
+<div class="section-label">About</div>
+<h2>Operational Turnarounds. Team Development. Execution.</h2>
+</div>
+
+<div class="about">
+
+<p>
+Throughout my career, I have been trusted to restore control in challenging operational environments. My experience spans production management, materials management, production scheduling, inventory control, supplier management, and manufacturing leadership.
+</p>
+
+<p>
+I specialize in identifying constraints, aligning cross-functional teams, improving accountability, and implementing practical solutions that drive measurable results.
+</p>
+
+<p>
+Whether recovering schedules, reducing backlog, improving supplier performance, or building stronger teams, my focus remains the same: create clarity, improve execution, and deliver sustainable performance.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="leadership">
+
+<div class="container">
+
+<div class="section-header">
+<div class="section-label">Leadership Philosophy</div>
+<h2>How I Lead</h2>
+</div>
+
+<div class="grid-two">
+
+<div class="card">
+<h3>Clarity</h3>
+<p>High-performing organizations begin with clear priorities, expectations, and communication.</p>
+</div>
+
+<div class="card">
+<h3>Accountability</h3>
+<p>Strong cultures are built when responsibility, ownership, and trust are consistently reinforced.</p>
+</div>
+
+<div class="card">
+<h3>Continuous Improvement</h3>
+<p>Operational excellence is achieved through disciplined improvement and relentless problem-solving.</p>
+</div>
+
+<div class="card">
+<h3>People Development</h3>
+<p>Sustainable success comes from investing in people and helping teams realize their full potential.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="career">
+
+<div class="container">
+
+<div class="section-header">
+<div class="section-label">Career Highlights</div>
+<h2>Leadership Experience</h2>
+</div>
+
+<div class="role">
+<h3>Bunting Bearings</h3>
+<h4>Production Manager</h4>
+<p>
+Reduced past-due line items from 2,432 to 30 while directing daily production operations, labor deployment, and manufacturing execution.
+</p>
+</div>
+
+<div class="role">
+<h3>Axis Engineering</h3>
+<h4>Materials Manager & Master Scheduler</h4>
+<p>
+Improved receiving throughput 35%, increased supplier delivery performance from 75% to 95%, and implemented systems that improved material flow and inventory visibility.
+</p>
+</div>
+
+<div class="role">
+<h3>MAC Valves</h3>
+<h4>Taiwan Assembly Coordinator</h4>
+<p>
+Expanded product management from 5 to over 1,000 SKUs while supporting production growth from approximately 200,000 to 3.1 million annual units.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="quote">
+
+<div class="quote-text">
+"Leadership is measured by the people, processes, and performance left stronger than they were found."
+</div>
+
+</section>
+
+<section id="contact" class="contact">
+
+<div class="container">
+
+<div class="section-header">
+<div class="section-label">Connect</div>
+<h2>Let's Start a Conversation</h2>
+</div>
+
+<p>
+Whether discussing manufacturing leadership, production operations, supply chain execution, or future opportunities, I welcome the opportunity to connect.
+</p>
+
+<div class="buttons">
+
+Jason_Connor_Resume.pdf
+View Resume
+</a>
+
+YOUR_LINKEDIN_URL
+LinkedIn
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Jason Connor | Production • Operations • Supply Chain Leadership
+
+</footer>
+
 </body>
 </html>
