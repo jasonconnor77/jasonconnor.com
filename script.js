@@ -41,6 +41,7 @@
       letter-spacing:.07em!important;
     }
     .page-meta{font-size:12px!important;font-weight:500!important}
+    .impact-meta span{font-size:15px!important;font-weight:600!important;color:var(--copper2)!important;letter-spacing:.08em!important}
 
     /* Hero proof strip */
     .hero-foot{margin-top:34px!important;padding-top:22px!important}
@@ -74,21 +75,21 @@
     .page-hero .lead{font-size:clamp(17px,1.5vw,21px);margin-top:20px}
     .page-meta{margin-top:28px}
 
-    /* Experience: tighter flow and stronger hierarchy */
-    .experience-block{gap:52px!important;padding:42px 0!important}
+    /* Experience: compact continuous flow */
+    .experience-block{gap:52px!important;padding:26px 0!important}
     .experience-block:first-child{padding-top:0!important}
     .experience-meta{top:108px!important}
     .company-name{font-size:27px!important;line-height:1.1!important}
     .location{font-size:15px!important;margin-top:5px!important}
-    .role{padding-bottom:36px!important}
-    .role+.role{padding-top:8px!important}
+    .role{padding-bottom:16px!important;margin:0!important}
+    .role+.role{padding-top:0!important;margin-top:8px!important}
     .role-head{padding-bottom:15px!important}
     .role-head h3{font-size:34px!important;line-height:1.05!important}
     .role>p{font-size:18px!important;line-height:1.55!important;color:#43515d!important}
     .role ul{margin:20px 0 0!important;padding-left:24px!important;color:#52606c!important}
     .role li{margin:0 0 10px!important;line-height:1.52!important}
     .role li::marker{color:var(--copper)}
-    .role-results{margin-top:24px!important;gap:12px!important}
+    .role-results{margin-top:24px!important;margin-bottom:0!important;gap:12px!important}
     .role-result{padding:22px!important;border:1px solid #ded2c4!important;border-left:4px solid var(--copper)!important;background:#efe7dc!important}
     .role-result strong{font-size:28px!important;line-height:1.05!important}
     .role-result span{font-size:16px!important;line-height:1.45!important}
@@ -128,11 +129,13 @@
       .page-hero .lead{font-size:16px}
       .philosophy-number,.metric-no,.capability .num,.principle .num,.system-section .eyebrow,.timeline-item .years,.role-head span,.case-company,.section-intro .eyebrow{font-size:13px!important}
       .question-row>span:first-child,.question-row>span:last-child{font-size:12px!important}
+      .impact-meta span{font-size:14px!important}
       .metric-value{font-size:clamp(42px,12vw,56px);white-space:nowrap}
       .case-result{font-size:16px!important}
       .case-result strong{font-size:34px!important}
-      .experience-block{padding:34px 0!important;gap:24px!important}
-      .role{padding-bottom:28px!important}
+      .experience-block{padding:20px 0!important;gap:22px!important}
+      .role{padding-bottom:12px!important}
+      .role+.role{margin-top:4px!important}
       .role-head h3{font-size:30px!important}
       .role>p{font-size:17px!important}
       .role-result strong{font-size:25px!important}
