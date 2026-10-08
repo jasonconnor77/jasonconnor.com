@@ -1,3 +1,5 @@
+.mobile-label-break{display:none}
+
 @media (max-width:720px){
   /* FIRST CONTENT SECTION: visible immediately on load.
      Later sections keep the existing reveal-on-scroll behavior. */
@@ -36,31 +38,39 @@
     text-align:center!important;
   }
 
-  /* IMPACT: phone-safe layout for longer metric labels. */
+  /* IMPACT: label left, metric right, context below. */
   .section.navy .metric-row{
     display:grid!important;
-    grid-template-columns:1fr!important;
-    gap:10px!important;
-    align-items:start!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    column-gap:12px!important;
+    row-gap:12px!important;
+    align-items:center!important;
   }
   .section.navy .metric-row .metric-no{
     grid-column:1!important;
-    grid-row:auto!important;
+    grid-row:1!important;
     justify-self:start!important;
+    max-width:100%!important;
     white-space:normal!important;
+    line-height:1.25!important;
   }
   .section.navy .metric-row .metric-value{
-    grid-column:1!important;
-    grid-row:auto!important;
+    grid-column:2!important;
+    grid-row:1!important;
     justify-self:end!important;
+    text-align:right!important;
     white-space:nowrap!important;
   }
   .section.navy .metric-row p{
-    grid-column:1!important;
-    grid-row:auto!important;
+    grid-column:1 / -1!important;
+    grid-row:2!important;
     width:100%!important;
     margin:0!important;
   }
+  .section.navy .metric-row:last-child .metric-value{
+    font-size:clamp(34px,10vw,46px)!important;
+  }
+  .mobile-label-break{display:inline!important}
 
   /* SYSTEMS > TECHNOLOGY: clean two-card treatment, no decorative arrow. */
   .technology-pair{
