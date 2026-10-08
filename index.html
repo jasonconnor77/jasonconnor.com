@@ -13,8 +13,21 @@
   <link rel="stylesheet" href="mobile.css?v=home-fixes-20261008">
   <link rel="stylesheet" href="mobile-home.css?v=4">
   <style>
-    .hero .hero-actions .button::after{display:none}
     .timeline-item .home-location{color:var(--muted);font-weight:500}
+    @media(max-width:720px){
+      .systems-band .flow-row:first-child{
+        border-bottom:0!important;
+        padding-bottom:8px!important;
+      }
+      .systems-band .flow-row:first-child::after{
+        content:'↓';
+        display:block;
+        text-align:center;
+        color:var(--copper2);
+        font:600 22px/1 'IBM Plex Mono',monospace;
+        padding-top:2px;
+      }
+    }
   </style>
 </head>
 <body>
