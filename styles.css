@@ -20,3 +20,16 @@
   letter-spacing:0!important;
   text-transform:none!important;
 }
+
+/* Clear directional cues in the homepage systems flow. */
+#main .systems-band .flow-arrow{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:34px!important;
+  font-weight:700!important;
+  line-height:1!important;
+  min-width:44px;
+  min-height:44px;
+  color:var(--copper2)!important;
+}
