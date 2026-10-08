@@ -128,9 +128,13 @@
     text-align:left!important;
   }
 
-  /* ALL MOBILE FOOTERS: match the Home footer treatment. */
+  /* ALL MOBILE FOOTERS: compact, centered, and consistent. */
+  .site-footer{
+    padding:54px 0 24px!important;
+  }
   .site-footer .footer-top{
-    gap:30px!important;
+    gap:28px!important;
+    padding-bottom:32px!important;
   }
   .site-footer .footer-nav{
     width:100%!important;
@@ -138,7 +142,7 @@
     flex-wrap:nowrap!important;
     justify-content:center!important;
     align-items:center!important;
-    gap:11px!important;
+    gap:16px!important;
   }
   .site-footer .footer-nav a{
     font-size:14px!important;
@@ -149,21 +153,51 @@
     display:flex!important;
     flex-direction:column!important;
     align-items:center!important;
-    gap:12px!important;
+    justify-content:center!important;
+    gap:10px!important;
+    padding-top:22px!important;
     text-align:center!important;
   }
-  .site-footer .footer-bottom span:first-child{
+  .site-footer .footer-bottom > span:first-child{
+    display:inline-flex!important;
+    flex-direction:row!important;
+    align-items:baseline!important;
+    justify-content:center!important;
+    width:auto!important;
     font-size:11px!important;
+    line-height:1.2!important;
+    white-space:nowrap!important;
+  }
+  .site-footer .footer-bottom > span:first-child > [data-year]{
+    display:inline!important;
+    width:auto!important;
+    margin:0!important;
+    font-size:inherit!important;
+    line-height:inherit!important;
     white-space:nowrap!important;
   }
   .site-footer .footer-bottom > span:last-child{
     display:block!important;
-    width:min(100%,340px)!important;
+    width:min(100%,360px)!important;
     margin:0 auto!important;
     font-size:10.5px!important;
-    line-height:1.45!important;
+    line-height:1.5!important;
     letter-spacing:.045em!important;
     white-space:normal!important;
     text-align:center!important;
   }
+}
+
+/* Keep the copyright mark, year, and name together on desktop and mobile. */
+.site-footer .footer-bottom > span:first-child{
+  display:inline-flex!important;
+  flex-direction:row!important;
+  align-items:baseline!important;
+  white-space:nowrap!important;
+}
+.site-footer .footer-bottom > span:first-child > [data-year]{
+  display:inline!important;
+  width:auto!important;
+  margin:0!important;
+  white-space:nowrap!important;
 }
