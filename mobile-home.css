@@ -60,9 +60,9 @@
     white-space:normal!important;
   }
 
-  /* Career Snapshot intro copy should match the smaller Systems closing copy. */
+  /* Career Snapshot intro copy: readable, but still secondary to the heading. */
   main > section.paper:last-of-type .section-intro > .lead{
-    font-size:15px!important;
+    font-size:17px!important;
     line-height:1.5!important;
   }
 
