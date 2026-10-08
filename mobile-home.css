@@ -60,12 +60,6 @@
     white-space:normal!important;
   }
 
-  /* Career Snapshot intro copy: readable, but still secondary to the heading. */
-  main > section.paper:last-of-type .section-intro > .lead{
-    font-size:17px!important;
-    line-height:1.5!important;
-  }
-
   /* Footer nav stays centered on one line, with slightly stronger type */
   .site-footer .footer-nav{
     width:100%!important;
