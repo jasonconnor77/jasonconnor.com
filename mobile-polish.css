@@ -7,8 +7,8 @@
     transform:none!important;
   }
 
-  /* Shared mobile category rows for Impact and Systems. */
-  #main .page-hero .page-meta:is(.impact-meta,.systems-meta){
+  /* Shared mobile category rows for Impact, Systems, and Experience. */
+  #main .page-hero .page-meta:is(.impact-meta,.systems-meta,.experience-hero-meta){
     width:100%!important;
     display:flex!important;
     flex-wrap:wrap!important;
@@ -19,7 +19,7 @@
     min-height:14.4px!important;
     overflow:visible!important;
   }
-  #main .page-hero .page-meta:is(.impact-meta,.systems-meta) span{
+  #main .page-hero .page-meta:is(.impact-meta,.systems-meta,.experience-hero-meta) span{
     font-family:'IBM Plex Mono',monospace!important;
     font-size:12px!important;
     line-height:1.2!important;
@@ -28,6 +28,12 @@
     text-transform:uppercase!important;
     white-space:nowrap!important;
     color:var(--copper2)!important;
+  }
+  #main .page-hero .experience-hero-meta span:nth-child(3){
+    flex:0 0 100%!important;
+    width:100%!important;
+    margin-top:2px!important;
+    text-align:center!important;
   }
 
   /* SYSTEMS > TECHNOLOGY: clean two-card treatment, no decorative arrow. */
