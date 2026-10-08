@@ -1,0 +1,49 @@
+/* Desktop header scale refinement — 2026-10-08 */
+@media (min-width:721px){
+  .site-header .nav-shell{
+    min-height:98px!important;
+    gap:40px!important;
+  }
+
+  .site-header .brand{
+    gap:16px!important;
+  }
+
+  .site-header .brand-monogram{
+    flex:0 0 68px!important;
+    width:68px!important;
+    height:68px!important;
+    min-width:68px!important;
+    min-height:68px!important;
+  }
+
+  .site-header .brand .brand-text strong{
+    font-size:31px!important;
+    line-height:.95!important;
+  }
+
+  .site-header .brand .brand-text span{
+    margin-top:7px!important;
+    font-size:13px!important;
+    line-height:1.25!important;
+  }
+
+  .site-header .nav{
+    gap:30px!important;
+    font-size:15px!important;
+  }
+
+  .site-header .nav a{
+    font-size:15px!important;
+    padding:12px 0!important;
+  }
+
+  .site-header .nav .contact-link{
+    min-height:48px!important;
+    padding:0 18px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    font-size:15px!important;
+  }
+}
