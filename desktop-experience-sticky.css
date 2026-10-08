@@ -1,0 +1,9 @@
+@media (min-width:721px){
+  /* EXPERIENCE DESKTOP: keep the active role visible while its content scrolls. */
+  .experience-block .role-head{
+    position:sticky!important;
+    top:120px!important;
+    z-index:20!important;
+    background:var(--paper)!important;
+  }
+}
