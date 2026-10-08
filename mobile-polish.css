@@ -238,21 +238,3 @@
   margin:0 .55em 0 0!important;
   white-space:nowrap!important;
 }
-
-/* Footer Contact CTA: outlined without changing nav spacing. */
-.site-footer .footer-nav a[href="contact.html"]{
-  position:relative!important;
-  color:#fff!important;
-}
-.site-footer .footer-nav a[href="contact.html"]::after{
-  content:'';
-  position:absolute;
-  inset:-10px -14px;
-  border:1px solid rgba(255,255,255,.34);
-  pointer-events:none;
-}
-@media(max-width:720px){
-  .site-footer .footer-nav a[href="contact.html"]::after{
-    inset:-8px -9px;
-  }
-}
