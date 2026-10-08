@@ -36,6 +36,32 @@
     text-align:center!important;
   }
 
+  /* IMPACT: phone-safe layout for longer metric labels. */
+  .section.navy .metric-row{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+    align-items:start!important;
+  }
+  .section.navy .metric-row .metric-no{
+    grid-column:1!important;
+    grid-row:auto!important;
+    justify-self:start!important;
+    white-space:normal!important;
+  }
+  .section.navy .metric-row .metric-value{
+    grid-column:1!important;
+    grid-row:auto!important;
+    justify-self:end!important;
+    white-space:nowrap!important;
+  }
+  .section.navy .metric-row p{
+    grid-column:1!important;
+    grid-row:auto!important;
+    width:100%!important;
+    margin:0!important;
+  }
+
   /* SYSTEMS > TECHNOLOGY: clean two-card treatment, no decorative arrow. */
   .technology-pair{
     margin-top:26px!important;
@@ -171,7 +197,7 @@
   .site-footer .footer-bottom > span:first-child > [data-year]{
     display:inline!important;
     width:auto!important;
-    margin:0!important;
+    margin:0 .55em 0 0!important;
     font-size:inherit!important;
     line-height:inherit!important;
     white-space:nowrap!important;
@@ -198,6 +224,6 @@
 .site-footer .footer-bottom > span:first-child > [data-year]{
   display:inline!important;
   width:auto!important;
-  margin:0!important;
+  margin:0 .55em 0 0!important;
   white-space:nowrap!important;
 }
