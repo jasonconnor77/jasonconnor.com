@@ -278,6 +278,13 @@
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
 
+  const closeMenu = () => {
+    nav?.classList.remove('open');
+    menuButton?.classList.remove('active');
+    menuButton?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  };
+
   menuButton?.addEventListener('click', () => {
     const open = !nav.classList.contains('open');
     nav.classList.toggle('open', open);
@@ -286,11 +293,15 @@
     document.body.classList.toggle('menu-open', open);
   });
 
-  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-    nav.classList.remove('open');
-    menuButton?.classList.remove('active');
-    document.body.classList.remove('menu-open');
-  }));
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+  document.addEventListener('pointerdown', event => {
+    if (!window.matchMedia('(max-width:720px)').matches || !nav?.classList.contains('open')) return;
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    if (nav.contains(target) || menuButton?.contains(target)) return;
+    closeMenu();
+  });
 
   /* Header/footer navigation should always open the destination at the top. */
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
