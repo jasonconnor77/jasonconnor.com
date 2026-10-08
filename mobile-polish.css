@@ -7,33 +7,26 @@
     transform:none!important;
   }
 
-  /* IMPACT PAGE: stronger category labels without crowding the row. */
-  .page-hero .impact-meta{
+  /* Shared mobile category rows for Impact and Systems. */
+  #main .page-hero .page-meta:is(.impact-meta,.systems-meta){
+    width:100%!important;
+    display:flex!important;
+    flex-wrap:wrap!important;
+    justify-content:center!important;
+    align-items:center!important;
     gap:10px!important;
+    margin-top:28px!important;
+    min-height:14.4px!important;
+    overflow:visible!important;
   }
-  .page-hero .impact-meta span{
+  #main .page-hero .page-meta:is(.impact-meta,.systems-meta) span{
+    font-family:'IBM Plex Mono',monospace!important;
     font-size:12px!important;
     line-height:1.2!important;
     font-weight:600!important;
     letter-spacing:.055em!important;
-    color:var(--copper2)!important;
-  }
-
-  /* SYSTEMS HERO TAGS: larger and centered. */
-  .page-hero .systems-meta{
-    width:100%!important;
-    display:flex!important;
-    justify-content:center!important;
-    align-items:center!important;
-    gap:16px!important;
-    margin-top:30px!important;
-    overflow:visible!important;
-  }
-  .page-hero .systems-meta span{
-    font-size:12.5px!important;
-    line-height:1.2!important;
-    font-weight:600!important;
-    letter-spacing:.05em!important;
+    text-transform:uppercase!important;
+    white-space:nowrap!important;
     color:var(--copper2)!important;
   }
 
