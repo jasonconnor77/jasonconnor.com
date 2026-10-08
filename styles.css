@@ -20,6 +20,3 @@
   letter-spacing:0!important;
   text-transform:none!important;
 }
-
-/* Action labels carry the button without a decorative arrow. */
-#main .button::after{content:none!important;display:none!important;}
