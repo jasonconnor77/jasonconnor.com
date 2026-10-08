@@ -1,0 +1,25 @@
+@media (max-width:720px){
+  /* Experience mobile: keep employer visible through the company block,
+     then keep the active role directly underneath until the next role. */
+  .experience-block{
+    overflow:visible!important;
+  }
+
+  .experience-block .experience-meta{
+    position:sticky!important;
+    top:0!important;
+    z-index:30!important;
+    align-self:start!important;
+    background:var(--paper)!important;
+    padding:10px 0 12px!important;
+    border-bottom:1px solid var(--line)!important;
+  }
+
+  .experience-block .role-head{
+    position:sticky!important;
+    top:78px!important;
+    z-index:25!important;
+    background:var(--paper)!important;
+    padding:14px 0 12px!important;
+  }
+}
