@@ -150,21 +150,32 @@
     line-height:1.12!important;
     text-align:center!important;
   }
-  html body .systems-band .flow-box > .flow-detail{
+  html body .systems-band .flow-box > span{
     display:block!important;
     margin-top:8px!important;
-    font-size:14px!important;
+    font-size:0!important;
     line-height:1.4!important;
     text-align:center!important;
   }
-  html body .systems-band .flow-box .flow-detail .flow-line{
+  html body .systems-band .flow-box > span::after{
     display:block!important;
-    margin:0!important;
-    font:inherit!important;
-    line-height:inherit!important;
-    color:inherit!important;
-    white-space:nowrap!important;
+    font-size:14px!important;
+    line-height:1.4!important;
+    color:rgba(255,255,255,.62)!important;
+    white-space:pre-line!important;
     text-align:center!important;
+  }
+  html body .systems-band .flow-row:first-child .flow-box:first-child > span::after{
+    content:"Orders · Due Dates · Inventory · Routings\A Current Status"!important;
+  }
+  html body .systems-band .flow-row:first-child .flow-box:last-child > span::after{
+    content:"Priorities · Shortages · Capacity · Exceptions\A Operating Risk"!important;
+  }
+  html body .systems-band .flow-row:nth-child(2) .flow-box:first-child > span::after{
+    content:"Automation · Live Views · Workflow\A Decision Support"!important;
+  }
+  html body .systems-band .flow-row:nth-child(2) .flow-box:last-child > span::after{
+    content:"What Needs Attention · Who Owns It\A What Happens Next"!important;
   }
 
   /* Stronger mobile systems flow: consistent, wider arrows and larger punch line. */
@@ -278,10 +289,26 @@
     border-bottom:2px solid var(--copper2)!important;
     border-left:1px solid rgba(255,255,255,.16)!important;
   }
-  .systems-band .flow-box .flow-detail .flow-line{
-    display:inline!important;
+  .systems-band .flow-box > span{
+    font-size:0!important;
   }
-  .systems-band .flow-box .flow-detail .flow-line + .flow-line::before{
-    content:' · ';
+  .systems-band .flow-box > span::after{
+    display:block!important;
+    font-size:13px!important;
+    line-height:1.4!important;
+    color:rgba(255,255,255,.5)!important;
+    white-space:normal!important;
+  }
+  .systems-band .flow-row:first-child .flow-box:first-child > span::after{
+    content:"Orders · Due Dates · Inventory · Routings · Current Status"!important;
+  }
+  .systems-band .flow-row:first-child .flow-box:last-child > span::after{
+    content:"Priorities · Shortages · Capacity · Exceptions · Operating Risk"!important;
+  }
+  .systems-band .flow-row:nth-child(2) .flow-box:first-child > span::after{
+    content:"Automation · Live Views · Workflow · Decision Support"!important;
+  }
+  .systems-band .flow-row:nth-child(2) .flow-box:last-child > span::after{
+    content:"What Needs Attention · Who Owns It · What Happens Next"!important;
   }
 }
