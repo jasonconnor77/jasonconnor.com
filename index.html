@@ -11,7 +11,7 @@
   <title>Jason Connor | Manufacturing Operations Leadership</title>
   <link rel="stylesheet" href="styles.css?v=flow-buttons-20261008">
   <link rel="stylesheet" href="mobile.css?v=home-fixes-20261008">
-  <link rel="stylesheet" href="mobile-home.css?v=6">
+  <link rel="stylesheet" href="mobile-home.css?v=7">
   <style>
     .timeline-item .home-location{color:var(--muted);font-weight:500}
     @media(max-width:720px){
@@ -24,12 +24,40 @@
         display:block;
         text-align:center;
         color:var(--copper2);
-        font:600 22px/1 'IBM Plex Mono',monospace;
+        font-family:'Archivo',Arial,sans-serif!important;
+        font-size:38px!important;
+        line-height:1!important;
+        font-weight:900!important;
+        transform:scaleX(1.55)!important;
+        transform-origin:center!important;
         padding-top:2px;
       }
       .systems-band .flow-box strong{
         font-size:22px!important;
         line-height:1.15!important;
+      }
+      .systems-band .flow-arrow{
+        font-size:0!important;
+        transform:none!important;
+        text-align:center!important;
+      }
+      .systems-band .flow-arrow::before{
+        content:'↓'!important;
+        display:block!important;
+        color:var(--copper2)!important;
+        font-family:'Archivo',Arial,sans-serif!important;
+        font-size:38px!important;
+        line-height:1!important;
+        font-weight:900!important;
+        text-align:center!important;
+        transform:scaleX(1.55)!important;
+        transform-origin:center!important;
+      }
+      .systems-band .flow-final strong{
+        font-size:30px!important;
+        line-height:1.08!important;
+        font-weight:800!important;
+        letter-spacing:-.025em!important;
       }
     }
   </style>
@@ -61,5 +89,17 @@
       detail.textContent = 'What needs attention · who owns it · what happens next';
     }
   });
+
+  const brandDescriptor = document.querySelector('.site-header .brand-text > span');
+  const syncBrandDescriptor = () => {
+    if (!brandDescriptor) return;
+    if (window.matchMedia('(max-width:720px)').matches) {
+      brandDescriptor.innerHTML = 'Manufacturing Operations<br>Production Leadership<br>Operational Turnarounds';
+    } else {
+      brandDescriptor.textContent = 'Manufacturing Operations · Production Leadership · Operational Turnarounds';
+    }
+  };
+  syncBrandDescriptor();
+  window.addEventListener('resize', syncBrandDescriptor);
 </script>
 </body></html>
