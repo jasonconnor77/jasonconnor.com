@@ -43,6 +43,11 @@
     color:#D9AF88!important;
   }
 
+  /* Experience hero: slightly tighter mobile paragraph rhythm. */
+  body:has(.experience-hero-meta) .page-hero .lead{
+    line-height:1.4!important;
+  }
+
   /* HOME SYSTEMS FLOW: suppress the original arrow character completely. */
   html body .systems-band .flow .flow-arrow{
     display:flex!important;
