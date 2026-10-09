@@ -1,5 +1,15 @@
 @media (max-width:720px){
   /* HOME MOBILE FINAL OVERRIDES */
+  html,
+  body{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+  }
+  body > *{
+    max-width:100%!important;
+  }
+
   .site-header .brand-monogram{
     width:56px!important;
     height:52px!important;
