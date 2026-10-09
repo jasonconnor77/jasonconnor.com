@@ -60,6 +60,32 @@
     white-space:normal!important;
   }
 
+  /* Stronger mobile systems flow: heavier arrows and punch line. */
+  .systems-band .flow-arrow{
+    font-size:0!important;
+    transform:none!important;
+    text-align:center!important;
+  }
+  .systems-band .flow-arrow::before,
+  .systems-band .flow-row:first-child::after{
+    content:'↓'!important;
+    display:block!important;
+    color:var(--copper2)!important;
+    font-family:'Archivo',Arial,sans-serif!important;
+    font-size:34px!important;
+    font-weight:900!important;
+    line-height:1!important;
+    text-align:center!important;
+    transform:scaleX(1.35)!important;
+    transform-origin:center!important;
+  }
+  .systems-band .flow-final strong{
+    font-size:24px!important;
+    line-height:1.15!important;
+    font-weight:780!important;
+    letter-spacing:-.015em!important;
+  }
+
   /* Footer nav stays centered on one line, with slightly stronger type */
   .site-footer .footer-nav{
     width:100%!important;
