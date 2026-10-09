@@ -150,11 +150,20 @@
     line-height:1.12!important;
     text-align:center!important;
   }
-  html body .systems-band .flow-box span{
+  html body .systems-band .flow-box > .flow-detail{
     display:block!important;
     margin-top:8px!important;
     font-size:14px!important;
     line-height:1.4!important;
+    text-align:center!important;
+  }
+  html body .systems-band .flow-box .flow-detail .flow-line{
+    display:block!important;
+    margin:0!important;
+    font:inherit!important;
+    line-height:inherit!important;
+    color:inherit!important;
+    white-space:nowrap!important;
     text-align:center!important;
   }
 
@@ -268,5 +277,11 @@
     border-right:1px solid rgba(255,255,255,.16)!important;
     border-bottom:2px solid var(--copper2)!important;
     border-left:1px solid rgba(255,255,255,.16)!important;
+  }
+  .systems-band .flow-box .flow-detail .flow-line{
+    display:inline!important;
+  }
+  .systems-band .flow-box .flow-detail .flow-line + .flow-line::before{
+    content:' · ';
   }
 }
