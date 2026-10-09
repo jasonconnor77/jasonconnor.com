@@ -242,6 +242,11 @@
 }
 
 @media (min-width:721px){
+  /* Tight wrapped capability headings on desktop. */
+  .section.paper .capability h3{
+    line-height:1.05!important;
+  }
+
   /* Match the compact mobile identity tag on desktop. */
   .hero .hero-portrait .portrait-caption{
     display:inline-flex!important;
