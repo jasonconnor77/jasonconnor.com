@@ -7,16 +7,14 @@
     overflow-x:hidden!important;
   }
 
-  /* Final mobile header descriptor: three clean lines, no separators. */
+  /* Final mobile header descriptor: hide the old descriptor completely. */
   html body .site-header .brand-text > span{
-    display:block!important;
-    font-size:0!important;
-    line-height:0!important;
-    white-space:normal!important;
+    display:none!important;
   }
-  html body .site-header .brand-text > span::after{
+  html body .site-header .brand-text::after{
     content:"Manufacturing Operations\A Production Leadership\A Operational Turnarounds"!important;
     display:block!important;
+    margin-top:6px!important;
     white-space:pre-line!important;
     font-family:'Archivo',Arial,sans-serif!important;
     font-size:12px!important;
@@ -44,27 +42,28 @@
     text-align:center!important;
   }
   html body .systems-band .flow .flow-arrow::before{
-    content:'⬇'!important;
+    content:'\2193\FE0E'!important;
     display:block!important;
     position:absolute!important;
     inset:0!important;
     text-indent:0!important;
     color:var(--copper2)!important;
     font-family:Arial,sans-serif!important;
-    font-size:38px!important;
+    font-size:42px!important;
     line-height:46px!important;
-    font-weight:700!important;
+    font-weight:900!important;
     text-align:center!important;
-    transform:none!important;
+    transform:scaleX(1.25)!important;
+    transform-origin:center!important;
   }
   html body .systems-band .flow .flow-arrow::after{
     content:none!important;
     display:none!important;
   }
 
-  /* Connector between row one and row two uses the exact same arrow. */
+  /* Connector between row one and row two uses the exact same text arrow. */
   html body .systems-band .flow .flow-row:first-child::after{
-    content:'⬇'!important;
+    content:'\2193\FE0E'!important;
     display:block!important;
     width:100%!important;
     height:46px!important;
@@ -72,11 +71,12 @@
     padding:0!important;
     color:var(--copper2)!important;
     font-family:Arial,sans-serif!important;
-    font-size:38px!important;
+    font-size:42px!important;
     line-height:46px!important;
-    font-weight:700!important;
+    font-weight:900!important;
     text-align:center!important;
-    transform:none!important;
+    transform:scaleX(1.25)!important;
+    transform-origin:center!important;
   }
 
   /* Keep the final message visually stronger than the flow headings. */
