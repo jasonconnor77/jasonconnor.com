@@ -9,6 +9,24 @@
     transform:none!important;
   }
 
+  /* MOBILE HEADER: stack tagline cleanly with no dash separators. */
+  html body .site-header .brand-text > span{
+    font-size:0!important;
+    line-height:0!important;
+  }
+  html body .site-header .brand-text > span::after{
+    content:"Manufacturing Operations\A Production Leadership\A Operational Turnarounds";
+    display:block!important;
+    white-space:pre-line!important;
+    font-family:'Archivo',Arial,sans-serif!important;
+    font-size:12px!important;
+    line-height:1.25!important;
+    font-weight:650!important;
+    letter-spacing:.035em!important;
+    text-transform:none!important;
+    color:#D9AF88!important;
+  }
+
   /* Shared mobile category rows for Impact, Systems, and Experience. */
   #main .page-hero .page-meta:is(.impact-meta,.systems-meta,.experience-hero-meta){
     width:100%!important;
