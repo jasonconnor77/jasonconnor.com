@@ -108,3 +108,11 @@
     letter-spacing:-.025em!important;
   }
 }
+
+@media (min-width:721px){
+  /* Match the tighter hero paragraph rhythm on desktop without changing body copy. */
+  html body .hero .hero-copy > .lead,
+  html body .page-hero .lead{
+    line-height:1.28!important;
+  }
+}
