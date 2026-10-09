@@ -124,6 +124,13 @@
     line-height:1.5!important;
   }
 
+  /* Tighter wrapped heading lines on mobile only. */
+  .principle h3,
+  .capability h3,
+  .system-section h2{
+    line-height:1.04!important;
+  }
+
   /* EXPERIENCE: employer is the primary identifier; role is secondary. */
   .experience-block .company-name{
     font-size:30px!important;
