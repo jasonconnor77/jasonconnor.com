@@ -43,9 +43,10 @@
     color:#D9AF88!important;
   }
 
-  /* Consistent tighter mobile hero paragraph rhythm site-wide. */
-  .hero .hero-copy > .lead,
-  .page-hero .lead{
+  /* Exact gray hero paragraph treatment on every mobile page. */
+  html body .hero .hero-copy > .lead,
+  html body .page-hero .lead{
+    font-size:17px!important;
     line-height:1.28!important;
   }
 
