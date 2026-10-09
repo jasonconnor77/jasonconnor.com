@@ -1,0 +1,89 @@
+@media (max-width:720px){
+  /* Keep every mobile page locked to the viewport. */
+  html,
+  body{
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:hidden!important;
+  }
+
+  /* Final mobile header descriptor: three clean lines, no separators. */
+  html body .site-header .brand-text > span{
+    display:block!important;
+    font-size:0!important;
+    line-height:0!important;
+    white-space:normal!important;
+  }
+  html body .site-header .brand-text > span::after{
+    content:"Manufacturing Operations\A Production Leadership\A Operational Turnarounds"!important;
+    display:block!important;
+    white-space:pre-line!important;
+    font-family:'Archivo',Arial,sans-serif!important;
+    font-size:12px!important;
+    line-height:1.25!important;
+    font-weight:650!important;
+    letter-spacing:.035em!important;
+    text-transform:none!important;
+    color:#D9AF88!important;
+  }
+
+  /* Home Systems flow: hide the original right-arrow glyph completely. */
+  html body .systems-band .flow .flow-arrow{
+    display:block!important;
+    width:100%!important;
+    height:46px!important;
+    margin:0!important;
+    padding:0!important;
+    position:relative!important;
+    overflow:hidden!important;
+    font-size:0!important;
+    line-height:0!important;
+    color:transparent!important;
+    text-indent:-9999px!important;
+    transform:none!important;
+    text-align:center!important;
+  }
+  html body .systems-band .flow .flow-arrow::before{
+    content:'⬇'!important;
+    display:block!important;
+    position:absolute!important;
+    inset:0!important;
+    text-indent:0!important;
+    color:var(--copper2)!important;
+    font-family:Arial,sans-serif!important;
+    font-size:38px!important;
+    line-height:46px!important;
+    font-weight:700!important;
+    text-align:center!important;
+    transform:none!important;
+  }
+  html body .systems-band .flow .flow-arrow::after{
+    content:none!important;
+    display:none!important;
+  }
+
+  /* Connector between row one and row two uses the exact same arrow. */
+  html body .systems-band .flow .flow-row:first-child::after{
+    content:'⬇'!important;
+    display:block!important;
+    width:100%!important;
+    height:46px!important;
+    margin:4px 0 0!important;
+    padding:0!important;
+    color:var(--copper2)!important;
+    font-family:Arial,sans-serif!important;
+    font-size:38px!important;
+    line-height:46px!important;
+    font-weight:700!important;
+    text-align:center!important;
+    transform:none!important;
+  }
+
+  /* Keep the final message visually stronger than the flow headings. */
+  html body .systems-band .flow-final strong{
+    font-size:30px!important;
+    line-height:1.08!important;
+    font-weight:800!important;
+    letter-spacing:-.025em!important;
+  }
+}
