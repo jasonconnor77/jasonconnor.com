@@ -10,11 +10,29 @@
   <meta property="og:type" content="website">
   <title>Jason Connor | Manufacturing Operations Leadership</title>
   <link rel="stylesheet" href="styles.css?v=flow-buttons-20261008">
-  <link rel="stylesheet" href="mobile.css?v=home-fixes-20261008">
-  <link rel="stylesheet" href="mobile-home.css?v=7">
+  <link rel="stylesheet" href="mobile.css?v=header-arrows-20261009-1">
+  <link rel="stylesheet" href="mobile-home.css?v=8">
   <style>
     .timeline-item .home-location{color:var(--muted);font-weight:500}
     @media(max-width:720px){
+      /* Force the mobile header descriptor to three clean lines with no separators. */
+      html body .site-header .brand-text > span{
+        font-size:0!important;
+        line-height:0!important;
+      }
+      html body .site-header .brand-text > span::after{
+        content:"Manufacturing Operations\A Production Leadership\A Operational Turnarounds";
+        display:block!important;
+        white-space:pre-line!important;
+        font-family:'Archivo',Arial,sans-serif!important;
+        font-size:12px!important;
+        line-height:1.25!important;
+        font-weight:650!important;
+        letter-spacing:.035em!important;
+        text-transform:none!important;
+        color:#D9AF88!important;
+      }
+
       .systems-band .flow-row:first-child{
         border-bottom:0!important;
         padding-bottom:8px!important;
@@ -38,8 +56,11 @@
       }
       .systems-band .flow-arrow{
         font-size:0!important;
+        line-height:0!important;
+        color:transparent!important;
         transform:none!important;
         text-align:center!important;
+        overflow:hidden!important;
       }
       .systems-band .flow-arrow::before{
         content:'↓'!important;
