@@ -287,22 +287,50 @@
     white-space:nowrap!important;
   }
 
-  /* Systems flow cards: quiet frame with a bronze bottom accent. */
+  /* Desktop Systems flow: equal, centered cards with the bronze bottom accent. */
+  .systems-band .flow-row{
+    align-items:stretch!important;
+  }
   .systems-band .flow-box{
+    min-height:118px!important;
+    padding:22px 20px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    text-align:center!important;
     border-top:1px solid rgba(255,255,255,.16)!important;
     border-right:1px solid rgba(255,255,255,.16)!important;
     border-bottom:2px solid var(--copper2)!important;
     border-left:1px solid rgba(255,255,255,.16)!important;
+    background:rgba(255,255,255,.025)!important;
+  }
+  .systems-band .flow-box strong{
+    display:block!important;
+    width:100%!important;
+    font-size:18px!important;
+    line-height:1.15!important;
+    text-align:center!important;
   }
   .systems-band .flow-box > span{
+    display:block!important;
+    width:100%!important;
+    margin-top:10px!important;
     font-size:0!important;
+    line-height:1.4!important;
+    text-align:center!important;
   }
   .systems-band .flow-box > span::after{
     display:block!important;
     font-size:13px!important;
-    line-height:1.4!important;
-    color:rgba(255,255,255,.5)!important;
+    line-height:1.45!important;
+    color:rgba(255,255,255,.58)!important;
     white-space:normal!important;
+    text-align:center!important;
+  }
+  .systems-band .flow-arrow{
+    align-self:center!important;
+    text-align:center!important;
   }
   .systems-band .flow-row:first-child .flow-box:first-child > span::after{
     content:"Orders · Due Dates · Inventory · Routings · Current Status"!important;
