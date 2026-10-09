@@ -62,7 +62,7 @@
     text-align:center!important;
   }
 
-  /* Smaller solid bronze arrow — still clear, but secondary to the headings. */
+  /* Narrow-head bronze arrow — lighter visual weight while keeping the same shaft. */
   html body .systems-band .flow .flow-arrow::before{
     content:""!important;
     display:block!important;
@@ -72,7 +72,7 @@
     margin:0 auto!important;
     padding:0!important;
     background:var(--copper2)!important;
-    clip-path:polygon(41% 0,59% 0,59% 54%,100% 54%,50% 100%,0 54%,41% 54%)!important;
+    clip-path:polygon(41% 0,59% 0,59% 58%,86% 58%,50% 100%,14% 58%,41% 58%)!important;
     transform:none!important;
   }
   html body .systems-band .flow .flow-arrow::after{
@@ -89,7 +89,7 @@
     margin:6px auto 0!important;
     padding:0!important;
     background:var(--copper2)!important;
-    clip-path:polygon(41% 0,59% 0,59% 54%,100% 54%,50% 100%,0 54%,41% 54%)!important;
+    clip-path:polygon(41% 0,59% 0,59% 58%,86% 58%,50% 100%,14% 58%,41% 58%)!important;
     transform:none!important;
   }
 
