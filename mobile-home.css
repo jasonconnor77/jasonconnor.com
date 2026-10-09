@@ -120,6 +120,41 @@
     white-space:normal!important;
   }
 
+  /* Mobile Systems flow: centered desktop-style cards. */
+  html body .systems-band .flow{
+    gap:0!important;
+  }
+  html body .systems-band .flow-row,
+  html body .systems-band .flow-row:first-child{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    justify-items:stretch!important;
+    gap:0!important;
+    padding:0!important;
+    border:0!important;
+  }
+  html body .systems-band .flow-box{
+    width:100%!important;
+    margin:0!important;
+    padding:20px 16px!important;
+    border:1px solid rgba(255,255,255,.16)!important;
+    background:rgba(255,255,255,.025)!important;
+    text-align:center!important;
+  }
+  html body .systems-band .flow-box strong{
+    display:block!important;
+    font-size:22px!important;
+    line-height:1.12!important;
+    text-align:center!important;
+  }
+  html body .systems-band .flow-box span{
+    display:block!important;
+    margin-top:8px!important;
+    font-size:14px!important;
+    line-height:1.4!important;
+    text-align:center!important;
+  }
+
   /* Stronger mobile systems flow: consistent, wider arrows and larger punch line. */
   .systems-band .flow-arrow{
     font-size:0!important;
