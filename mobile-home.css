@@ -137,7 +137,10 @@
     width:100%!important;
     margin:0!important;
     padding:20px 16px!important;
-    border:1px solid rgba(255,255,255,.16)!important;
+    border-top:1px solid rgba(255,255,255,.16)!important;
+    border-right:1px solid rgba(255,255,255,.16)!important;
+    border-bottom:2px solid var(--copper2)!important;
+    border-left:1px solid rgba(255,255,255,.16)!important;
     background:rgba(255,255,255,.025)!important;
     text-align:center!important;
   }
@@ -257,5 +260,13 @@
     text-transform:uppercase!important;
     color:#D9AF88!important;
     white-space:nowrap!important;
+  }
+
+  /* Systems flow cards: quiet frame with a bronze bottom accent. */
+  .systems-band .flow-box{
+    border-top:1px solid rgba(255,255,255,.16)!important;
+    border-right:1px solid rgba(255,255,255,.16)!important;
+    border-bottom:2px solid var(--copper2)!important;
+    border-left:1px solid rgba(255,255,255,.16)!important;
   }
 }
