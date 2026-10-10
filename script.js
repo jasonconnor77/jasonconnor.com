@@ -7,6 +7,11 @@
   const menuButton = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav');
 
+  /* Career is the public page name and URL. Keep any older Experience links working cleanly. */
+  document.querySelectorAll('a[href="experience.html"]').forEach(link => {
+    link.setAttribute('href', 'career.html');
+  });
+
   const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 18);
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
