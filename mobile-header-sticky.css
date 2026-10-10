@@ -1,0 +1,11 @@
+@media (max-width:720px){
+  /* Keep the approved mobile header visible while the page scrolls. */
+  html body .site-header{
+    position:-webkit-sticky!important;
+    position:sticky!important;
+    inset:auto!important;
+    top:0!important;
+    z-index:160!important;
+    border-bottom:1px solid rgba(184,115,51,.68)!important;
+  }
+}
