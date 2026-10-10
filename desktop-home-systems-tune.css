@@ -12,18 +12,18 @@
     line-height:1.45!important;
   }
 
-  /* Keep the support copy sentence-style: first word capitalized, rest natural. */
+  /* Restore the previous phrase capitalization shown in the approved card treatment. */
   html body .systems-band .flow-row:first-child .flow-box:first-child > span::after{
-    content:"Orders · due dates · inventory · routings · current status"!important;
+    content:"Orders · Due Dates · Inventory · Routings · Current Status"!important;
   }
   html body .systems-band .flow-row:first-child .flow-box:last-child > span::after{
-    content:"Priorities · shortages · capacity · exceptions · operating risk"!important;
+    content:"Priorities · Shortages · Capacity · Exceptions · Operating Risk"!important;
   }
   html body .systems-band .flow-row:nth-child(2) .flow-box:first-child > span::after{
-    content:"Automation · live views · workflow · decision support"!important;
+    content:"Automation · Live Views · Workflow · Decision Support"!important;
   }
   html body .systems-band .flow-row:nth-child(2) .flow-box:last-child > span::after{
-    content:"What needs attention · who owns it · what happens next"!important;
+    content:"What Needs Attention · Who Owns It · What Happens Next"!important;
   }
 
   /* One strong bronze connector only — suppress the original text arrow. */
