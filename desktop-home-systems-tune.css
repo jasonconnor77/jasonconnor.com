@@ -1,14 +1,15 @@
 @media (min-width:721px){
-  /* HOME SYSTEMS — stronger desktop hierarchy. */
+  /* HOME SYSTEMS — restore the previous card typography scale. */
   html body .systems-band .flow-box strong{
-    font-size:22px!important;
-    line-height:1.12!important;
-    font-weight:780!important;
+    font-size:18px!important;
+    line-height:1.15!important;
+    font-weight:720!important;
+    text-transform:capitalize!important;
   }
 
   html body .systems-band .flow-box > span::after{
-    font-size:11.5px!important;
-    line-height:1.4!important;
+    font-size:13px!important;
+    line-height:1.45!important;
   }
 
   /* Keep the support copy sentence-style: first word capitalized, rest natural. */
@@ -54,7 +55,7 @@
     display:none!important;
   }
 
-  /* Give the conclusion more visual weight. */
+  /* Keep the stronger conclusion from the latest desktop refinement. */
   html body .systems-band .flow-final strong{
     font-size:28px!important;
     line-height:1.16!important;
