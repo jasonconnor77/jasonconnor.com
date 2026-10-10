@@ -13,7 +13,7 @@
   }
   html body:has(.nav a.active[href="index.html"]) #main::before{content:"HOME"!important}
   html body:has(.nav a.active[href="results.html"]) #main::before{content:"IMPACT"!important}
-  html body:has(.nav a.active[href="experience.html"]) #main::before{content:"EXPERIENCE"!important}
+  html body:has(.nav a.active[href="experience.html"]) #main::before{content:"CAREER"!important}
   html body:has(.nav a.active[href="systems.html"]) #main::before{content:"SYSTEMS"!important}
   html body:has(.nav a.active[href="about.html"]) #main::before{content:"ABOUT"!important}
   html body:has(.nav a.active[href="contact.html"]) #main::before{content:"CONTACT"!important}
