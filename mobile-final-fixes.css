@@ -1,10 +1,11 @@
 @media (max-width:720px){
-  /* Keep every mobile page locked to the viewport. */
+  /* Keep every mobile page locked to the viewport without creating a scroll
+     container. overflow-x:hidden can break position:sticky in mobile Safari. */
   html,
   body{
     width:100%!important;
     max-width:100%!important;
-    overflow-x:hidden!important;
+    overflow-x:clip!important;
   }
 
   /* SITE-WIDE MOBILE HEADER: hard-hide every old descriptor layer. */
