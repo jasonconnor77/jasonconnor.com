@@ -7,9 +7,10 @@
     text-transform:capitalize!important;
   }
 
+  /* Match the supporting copy size used by the desktop Systems page cards. */
   html body .systems-band .flow-box > span::after{
-    font-size:13px!important;
-    line-height:1.45!important;
+    font-size:14px!important;
+    line-height:1.4!important;
   }
 
   /* Restore the previous phrase capitalization shown in the approved card treatment. */
@@ -53,6 +54,11 @@
   html body .systems-band .flow-arrow::after{
     content:none!important;
     display:none!important;
+  }
+
+  /* Match the divider below the cards to the divider above them. */
+  html body .systems-band .flow-final{
+    border-top:1px solid rgba(255,255,255,.18)!important;
   }
 
   /* Keep the stronger conclusion from the latest desktop refinement. */
