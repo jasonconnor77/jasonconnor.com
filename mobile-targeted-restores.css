@@ -3,7 +3,7 @@
      label is present on first paint with no JavaScript or refresh morphing. */
   html body #main::before{
     display:block!important;
-    padding:9px 18px 10px!important;
+    padding:9px 20px 10px!important;
     background:var(--navy950)!important;
     border-bottom:1px solid rgba(217,175,136,.22)!important;
     font:600 10.5px/1.2 'IBM Plex Mono',monospace!important;
