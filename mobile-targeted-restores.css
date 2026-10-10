@@ -62,8 +62,9 @@
     white-space:nowrap!important;
   }
 
-  /* EXPERIENCE PAGE — employer stays pinned for its entire company block;
-     the active role stays directly underneath and releases at the next role. */
+  /* EXPERIENCE PAGE — the main mobile header is now sticky and is ~100px
+     tall. Keep the employer directly beneath that header, then the active
+     role beneath the employer. The page-name strip itself scrolls away. */
   html body #main .section.paper,
   html body #main .section.paper > .container,
   html body #main .experience-block,
@@ -89,7 +90,7 @@
   html body #main .experience-block .experience-meta{
     position:-webkit-sticky!important;
     position:sticky!important;
-    top:0!important;
+    top:100px!important;
     z-index:80!important;
     display:block!important;
     width:100%!important;
@@ -107,7 +108,7 @@
   html body #main .experience-block .role-head{
     position:-webkit-sticky!important;
     position:sticky!important;
-    top:76px!important;
+    top:178px!important;
     z-index:70!important;
     display:grid!important;
     width:100%!important;
