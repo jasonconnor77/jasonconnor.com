@@ -1,0 +1,55 @@
+/* Single source of truth for the JC monogram. Keep this import last. */
+.site-header .brand-monogram,
+.site-header .brand-monogram::before,
+.site-header .brand-monogram::after{
+  box-sizing:border-box!important;
+}
+
+.site-header .brand-monogram{
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  font-size:0!important;
+  line-height:0!important;
+  background-color:transparent!important;
+  background-image:url('assets/jc-logo.svg?v=clean-trace-20261010-1525')!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  background-size:contain!important;
+}
+.site-header .brand-monogram::before,
+.site-header .brand-monogram::after{
+  content:none!important;
+  display:none!important;
+}
+
+@media (max-width:720px){
+  html body .site-header .nav-shell .brand .brand-monogram{
+    width:100px!important;
+    height:72px!important;
+    min-width:100px!important;
+    min-height:72px!important;
+    flex:0 0 100px!important;
+  }
+}
+
+@media (min-width:721px){
+  html body .site-header .nav-shell .brand .brand-monogram{
+    width:108px!important;
+    height:78px!important;
+    min-width:108px!important;
+    min-height:78px!important;
+    flex:0 0 108px!important;
+  }
+}
+
+@media (min-width:721px) and (max-width:1000px){
+  html body .site-header .nav-shell .brand .brand-monogram{
+    width:86px!important;
+    height:62px!important;
+    min-width:86px!important;
+    min-height:62px!important;
+    flex:0 0 86px!important;
+  }
+}
