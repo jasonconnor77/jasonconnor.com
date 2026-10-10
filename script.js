@@ -3,6 +3,15 @@
   const viewport = document.querySelector('meta[name="viewport"]');
   if (viewport) viewport.setAttribute('content', 'width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no');
 
+  /* Keep the public Home URL clean: jasonconnor.com instead of /index.html. */
+  if (/\/index\.html$/i.test(window.location.pathname)) {
+    const cleanPath = window.location.pathname.replace(/index\.html$/i, '');
+    history.replaceState(null, '', `${cleanPath}${window.location.search}${window.location.hash}`);
+  }
+  document.querySelectorAll('a[href="index.html"]').forEach(link => {
+    link.setAttribute('href', '/');
+  });
+
   const header = document.querySelector('.site-header');
   const menuButton = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav');
