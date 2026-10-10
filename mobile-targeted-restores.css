@@ -1,5 +1,6 @@
 @media (max-width:720px){
-  /* SYSTEMS PAGE — center card content and restore a clear heading/body hierarchy. */
+  /* SYSTEMS PAGE — keep the centered card layout, but reduce the scale so
+     the cards support the page instead of overpowering the section heading. */
   html body .system-section .technology-operating-flow{
     grid-template-columns:1fr!important;
     gap:12px!important;
@@ -10,16 +11,16 @@
     flex-direction:column!important;
     align-items:center!important;
     justify-content:center!important;
-    padding:22px 20px!important;
+    padding:20px 18px!important;
     text-align:center!important;
   }
   html body .system-section .technology-stage strong{
     display:block!important;
     width:100%!important;
-    margin:0 0 10px!important;
+    margin:0 0 9px!important;
     font-family:'Archivo',Arial,sans-serif!important;
-    font-size:21px!important;
-    line-height:1.12!important;
+    font-size:18px!important;
+    line-height:1.14!important;
     font-weight:800!important;
     letter-spacing:-.01em!important;
     text-transform:none!important;
@@ -31,8 +32,8 @@
     width:100%!important;
     margin:0!important;
     font-family:'Archivo',Arial,sans-serif!important;
-    font-size:16px!important;
-    line-height:1.42!important;
+    font-size:15px!important;
+    line-height:1.38!important;
     font-weight:400!important;
     text-align:center!important;
     color:var(--navy)!important;
@@ -42,38 +43,52 @@
     white-space:nowrap!important;
   }
 
-  /* EXPERIENCE PAGE — restore employer + active-role sticky stack on mobile. */
-  html body .section.paper,
-  html body .section.paper > .container,
-  html body .experience-block,
-  html body .experience-block > div,
-  html body .experience-block .role{
+  /* EXPERIENCE PAGE — force the mobile layout back to the original sticky
+     stack: employer at the top, active role directly beneath it. Each role
+     releases when the next role arrives; each employer releases at the next
+     company block. Desktop rules are untouched. */
+  html body #main .section.paper,
+  html body #main .section.paper > .container,
+  html body #main .experience-block,
+  html body #main .experience-block > div,
+  html body #main .experience-block .role{
     overflow:visible!important;
+    contain:none!important;
   }
-  html body .experience-block.reveal,
-  html body .experience-block.reveal.visible{
+  html body #main .experience-block,
+  html body #main .experience-block.reveal,
+  html body #main .experience-block.reveal.visible{
+    display:block!important;
     transform:none!important;
   }
-  html body .experience-block .experience-meta{
+  html body #main .experience-block .experience-meta{
+    position:-webkit-sticky!important;
     position:sticky!important;
     top:0!important;
-    z-index:60!important;
-    align-self:start!important;
+    z-index:80!important;
+    display:block!important;
+    width:100%!important;
+    margin:0 0 14px!important;
     background:var(--paper)!important;
     padding:10px 0 12px!important;
     border-bottom:1px solid var(--line)!important;
     isolation:isolate!important;
   }
-  html body .experience-block .role-head{
+  html body #main .experience-block .role{
+    position:relative!important;
+  }
+  html body #main .experience-block .role-head{
+    position:-webkit-sticky!important;
     position:sticky!important;
     top:76px!important;
-    z-index:55!important;
+    z-index:70!important;
+    width:100%!important;
     background:var(--paper)!important;
-    padding:14px 0 12px!important;
+    padding:12px 0 11px!important;
     border-bottom:1px solid var(--line)!important;
     isolation:isolate!important;
   }
-  html body .experience-block .role-head::before{
+  html body #main .experience-block .role-head::before{
     content:""!important;
     position:absolute!important;
     left:0!important;
