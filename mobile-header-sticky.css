@@ -8,46 +8,4 @@
     z-index:160!important;
     border-bottom:1px solid rgba(184,115,51,.68)!important;
   }
-
-  /* Crisp JC monogram — replaces the raster silhouette so the mark stays sharp
-     on Retina/high-density mobile displays. */
-  html body .site-header .nav-shell .brand .brand-monogram{
-    display:grid!important;
-    place-items:center!important;
-    width:100px!important;
-    height:72px!important;
-    min-width:100px!important;
-    min-height:72px!important;
-    margin:0!important;
-    padding:0!important;
-    overflow:hidden!important;
-    position:relative!important;
-    border:1px solid rgba(255,255,255,.46)!important;
-    background:rgba(255,255,255,.018)!important;
-    font-size:0!important;
-    line-height:0!important;
-  }
-  html body .site-header .nav-shell .brand .brand-monogram::before{
-    content:"JC"!important;
-    display:block!important;
-    font-family:'Archivo',Arial,sans-serif!important;
-    font-size:38px!important;
-    line-height:1!important;
-    font-weight:820!important;
-    letter-spacing:-.075em!important;
-    color:#fff!important;
-    transform:translateX(-1px)!important;
-  }
-  html body .site-header .nav-shell .brand .brand-monogram::after{
-    content:""!important;
-    position:absolute!important;
-    right:-1px!important;
-    bottom:-1px!important;
-    width:18px!important;
-    height:18px!important;
-    border:0!important;
-    border-right:3px solid var(--copper2)!important;
-    border-bottom:3px solid var(--copper2)!important;
-    background:transparent!important;
-  }
 }
