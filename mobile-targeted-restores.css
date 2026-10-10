@@ -11,7 +11,8 @@
     text-transform:uppercase!important;
     color:var(--copper2)!important;
   }
-  html body:has(.nav a.active[href="index.html"]) #main::before{content:"HOME"!important}
+  html body:has(.nav a.active[href="index.html"]) #main::before,
+  html body:has(.nav a.active[href="/"]) #main::before{content:"HOME"!important}
   html body:has(.nav a.active[href="results.html"]) #main::before{content:"IMPACT"!important}
   html body:has(.nav a.active[href="experience.html"]) #main::before,
   html body:has(.nav a.active[href="career.html"]) #main::before{content:"CAREER"!important}
