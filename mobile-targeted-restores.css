@@ -18,6 +18,12 @@
   html body:has(.nav a.active[href="about.html"]) #main::before{content:"ABOUT"!important}
   html body:has(.nav a.active[href="contact.html"]) #main::before{content:"CONTACT"!important}
 
+  /* HOME PAGE — match the mobile hero-title scale used by interior pages. */
+  html body .hero .display{
+    font-size:clamp(38px,10.5vw,48px)!important;
+    line-height:.98!important;
+  }
+
   /* SYSTEMS PAGE — keep the centered card layout, but reduce the scale so
      the cards support the page instead of overpowering the section heading. */
   html body .system-section .technology-operating-flow{
@@ -127,5 +133,13 @@
     background:var(--paper)!important;
     pointer-events:none!important;
     z-index:-1!important;
+  }
+}
+
+@media (min-width:721px){
+  /* HOME PAGE — match the desktop hero-title scale used by interior pages. */
+  html body .hero .display{
+    font-size:clamp(48px,6vw,82px)!important;
+    line-height:.98!important;
   }
 }
