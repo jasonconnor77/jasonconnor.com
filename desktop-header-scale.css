@@ -1,20 +1,28 @@
-/* Desktop header scale refinement — 2026-10-08 */
+/* Desktop header scale refinement — 2026-10-10 */
 @media (min-width:721px){
   .site-header .nav-shell{
-    min-height:98px!important;
+    min-height:112px!important;
     gap:40px!important;
   }
 
   .site-header .brand{
-    gap:16px!important;
+    gap:18px!important;
   }
 
+  /* Same JC silhouette — larger on desktop and sourced from SVG so it stays crisp. */
   .site-header .brand-monogram{
-    flex:0 0 68px!important;
-    width:68px!important;
-    height:68px!important;
-    min-width:68px!important;
-    min-height:68px!important;
+    flex:0 0 108px!important;
+    width:108px!important;
+    height:78px!important;
+    min-width:108px!important;
+    min-height:78px!important;
+    border:0!important;
+    font-size:0!important;
+    background:url('assets/jc-logo.svg') center/contain no-repeat!important;
+  }
+
+  .site-header .brand-monogram:after{
+    display:none!important;
   }
 
   .site-header .brand .brand-text strong{
@@ -45,5 +53,23 @@
     align-items:center!important;
     justify-content:center!important;
     font-size:15px!important;
+  }
+}
+
+/* Keep mid-size desktop/tablet from getting crowded. */
+@media (min-width:721px) and (max-width:1000px){
+  .site-header .nav-shell{
+    min-height:102px!important;
+    gap:24px!important;
+  }
+  .site-header .brand{
+    gap:14px!important;
+  }
+  .site-header .brand-monogram{
+    flex-basis:86px!important;
+    width:86px!important;
+    height:62px!important;
+    min-width:86px!important;
+    min-height:62px!important;
   }
 }
