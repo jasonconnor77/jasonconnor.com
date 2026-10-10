@@ -11,20 +11,21 @@
   html body .systems-band .flow-box > span::after{
     font-size:14px!important;
     line-height:1.4!important;
+    white-space:pre-line!important;
   }
 
-  /* Restore the previous phrase capitalization shown in the approved card treatment. */
+  /* Force clean two-line wraps so each separator stays with the phrase above it. */
   html body .systems-band .flow-row:first-child .flow-box:first-child > span::after{
-    content:"Orders · Due Dates · Inventory · Routings · Current Status"!important;
+    content:"Orders · Due Dates · Inventory ·\A Routings · Current Status"!important;
   }
   html body .systems-band .flow-row:first-child .flow-box:last-child > span::after{
-    content:"Priorities · Shortages · Capacity · Exceptions · Operating Risk"!important;
+    content:"Priorities · Shortages · Capacity ·\A Exceptions · Operating Risk"!important;
   }
   html body .systems-band .flow-row:nth-child(2) .flow-box:first-child > span::after{
-    content:"Automation · Live Views · Workflow · Decision Support"!important;
+    content:"Automation · Live Views · Workflow ·\A Decision Support"!important;
   }
   html body .systems-band .flow-row:nth-child(2) .flow-box:last-child > span::after{
-    content:"What Needs Attention · Who Owns It · What Happens Next"!important;
+    content:"What Needs Attention · Who Owns It ·\A What Happens Next"!important;
   }
 
   /* One strong bronze connector only — suppress the original text arrow. */
