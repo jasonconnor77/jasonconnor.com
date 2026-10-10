@@ -9,7 +9,7 @@
     gap:18px!important;
   }
 
-  /* Same JC silhouette — larger on desktop and sourced from SVG so it stays crisp. */
+  /* Same JC silhouette — larger on desktop and sourced from a clean Bézier SVG. */
   .site-header .brand-monogram{
     flex:0 0 108px!important;
     width:108px!important;
@@ -18,7 +18,7 @@
     min-height:78px!important;
     border:0!important;
     font-size:0!important;
-    background:url('assets/jc-logo.svg') center/contain no-repeat!important;
+    background:url('assets/jc-logo.svg?v=bezier-20261010-1230') center/contain no-repeat!important;
   }
 
   .site-header .brand-monogram:after{
