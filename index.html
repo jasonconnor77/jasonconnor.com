@@ -15,107 +15,24 @@
   <style>
     .timeline-item .home-location{color:var(--muted);font-weight:500}
     @media(max-width:720px){
-      /* Force the mobile header descriptor to three clean lines with no separators. */
-      html body .site-header .brand-text > span{
-        font-size:0!important;
-        line-height:0!important;
-      }
-      html body .site-header .brand-text > span::after{
-        content:"Manufacturing Operations\A Production Leadership\A Operational Turnarounds";
-        display:block!important;
-        white-space:pre-line!important;
-        font-family:'Archivo',Arial,sans-serif!important;
-        font-size:12px!important;
-        line-height:1.25!important;
-        font-weight:650!important;
-        letter-spacing:.035em!important;
-        text-transform:none!important;
-        color:#D9AF88!important;
-      }
-
-      .systems-band .flow-row:first-child{
-        border-bottom:0!important;
-        padding-bottom:8px!important;
-      }
-      .systems-band .flow-row:first-child::after{
-        content:'↓';
-        display:block;
-        text-align:center;
-        color:var(--copper2);
-        font-family:'Archivo',Arial,sans-serif!important;
-        font-size:38px!important;
-        line-height:1!important;
-        font-weight:900!important;
-        transform:scaleX(1.55)!important;
-        transform-origin:center!important;
-        padding-top:2px;
-      }
-      .systems-band .flow-box strong{
-        font-size:22px!important;
-        line-height:1.15!important;
-      }
-      .systems-band .flow-arrow{
-        font-size:0!important;
-        line-height:0!important;
-        color:transparent!important;
-        transform:none!important;
-        text-align:center!important;
-        overflow:hidden!important;
-      }
-      .systems-band .flow-arrow::before{
-        content:'↓'!important;
-        display:block!important;
-        color:var(--copper2)!important;
-        font-family:'Archivo',Arial,sans-serif!important;
-        font-size:38px!important;
-        line-height:1!important;
-        font-weight:900!important;
-        text-align:center!important;
-        transform:scaleX(1.55)!important;
-        transform-origin:center!important;
-      }
-      .systems-band .flow-final strong{
-        font-size:30px!important;
-        line-height:1.08!important;
-        font-weight:800!important;
-        letter-spacing:-.025em!important;
-      }
+      html body .site-header .brand-text > span{font-size:0!important;line-height:0!important}
+      html body .site-header .brand-text > span::after{content:"Manufacturing Operations\A Production Leadership\A Operational Turnarounds";display:block!important;white-space:pre-line!important;font-family:'Archivo',Arial,sans-serif!important;font-size:12px!important;line-height:1.25!important;font-weight:650!important;letter-spacing:.035em!important;text-transform:none!important;color:#D9AF88!important}
+      .systems-band .flow-row:first-child{border-bottom:0!important;padding-bottom:8px!important}
+      .systems-band .flow-row:first-child::after{content:'↓';display:block;text-align:center;color:var(--copper2);font-family:'Archivo',Arial,sans-serif!important;font-size:38px!important;line-height:1!important;font-weight:900!important;transform:scaleX(1.55)!important;transform-origin:center!important;padding-top:2px}
+      .systems-band .flow-box strong{font-size:22px!important;line-height:1.15!important}
+      .systems-band .flow-arrow{font-size:0!important;line-height:0!important;color:transparent!important;transform:none!important;text-align:center!important;overflow:hidden!important}
+      .systems-band .flow-arrow::before{content:'↓'!important;display:block!important;color:var(--copper2)!important;font-family:'Archivo',Arial,sans-serif!important;font-size:38px!important;line-height:1!important;font-weight:900!important;text-align:center!important;transform:scaleX(1.55)!important;transform-origin:center!important}
+      .systems-band .flow-final strong{font-size:30px!important;line-height:1.08!important;font-weight:800!important;letter-spacing:-.025em!important}
     }
     @media(min-width:721px){
-      /* Strong desktop connectors between Systems cards. */
-      .systems-band .flow-arrow{
-        width:58px!important;
-        height:32px!important;
-        display:flex!important;
-        align-items:center!important;
-        justify-content:center!important;
-        flex:0 0 58px!important;
-        overflow:visible!important;
-        font-size:0!important;
-        line-height:0!important;
-        color:transparent!important;
-        transform:none!important;
-      }
-      .systems-band .flow-arrow::before{
-        content:""!important;
-        display:block!important;
-        width:50px!important;
-        height:28px!important;
-        background:var(--copper2)!important;
-        clip-path:polygon(0 34%,64% 34%,64% 8%,100% 50%,64% 92%,64% 66%,0 66%)!important;
-      }
+      .systems-band .flow-arrow{width:58px!important;height:32px!important;display:flex!important;align-items:center!important;justify-content:center!important;flex:0 0 58px!important;overflow:visible!important;font-size:0!important;line-height:0!important;color:transparent!important;transform:none!important}
+      .systems-band .flow-arrow::before{content:""!important;display:block!important;width:50px!important;height:28px!important;background:var(--copper2)!important;clip-path:polygon(0 34%,64% 34%,64% 8%,100% 50%,64% 92%,64% 66%,0 66%)!important}
     }
   </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <div class="container nav-shell">
-    <a class="brand" href="index.html" style="gap:16px"><span class="brand-monogram">JC</span><span class="brand-text"><strong style="font-family:'Archivo',Arial,sans-serif;font-size:28px!important;line-height:.95!important;font-weight:820!important;letter-spacing:-.035em!important;font-stretch:108%;color:#fff">Jason Connor</strong><span style="display:block;margin-top:6px;font-family:'Archivo',Arial,sans-serif;font-size:12px!important;line-height:1.25!important;font-weight:650!important;letter-spacing:.035em!important;text-transform:none!important;color:#D9AF88!important">Manufacturing Operations · Production Leadership · Operational Turnarounds</span></span></a>
-    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
-    <nav class="nav" aria-label="Primary navigation"><a class="active" href="index.html">Home</a><a href="results.html">Impact</a><a href="experience.html">Experience</a><a href="systems.html">Systems</a><a href="about.html">About</a><a class="contact-link" href="contact.html">Contact</a></nav>
-  </div>
-</header>
+<header class="site-header"><div class="container nav-shell"><a class="brand" href="index.html" style="gap:16px"><span class="brand-monogram">JC</span><span class="brand-text"><strong style="font-family:'Archivo',Arial,sans-serif;font-size:28px!important;line-height:.95!important;font-weight:820!important;letter-spacing:-.035em!important;font-stretch:108%;color:#fff">Jason Connor</strong><span style="display:block;margin-top:6px;font-family:'Archivo',Arial,sans-serif;font-size:12px!important;line-height:1.25!important;font-weight:650!important;letter-spacing:.035em!important;text-transform:none!important;color:#D9AF88!important">Manufacturing Operations · Production Leadership · Operational Turnarounds</span></span></a><button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button><nav class="nav" aria-label="Primary navigation"><a class="active" href="index.html">Home</a><a href="results.html">Impact</a><a href="experience.html">Experience</a><a href="systems.html">Systems</a><a href="about.html">About</a><a class="contact-link" href="contact.html">Contact</a></nav></div></header>
 <main id="main">
 <section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="eyebrow light">Manufacturing Operations · Production Leadership · Turnarounds</p><h1 class="display">Operational control.<br><span class="accent">Clear priorities.</span><br>Measurable results.</h1><p class="lead">Experience across production, scheduling, materials, inventory, suppliers, and floor leadership. I build the visibility and operating discipline complex manufacturing environments need to perform.</p><div class="hero-actions"><a class="button copper" href="results.html">View operating impact</a><a class="button ghost" href="experience.html">Career experience</a></div><div class="hero-foot"><div><strong>20+</strong><span>Years in manufacturing</span></div><div><strong>30+</strong><span>Production associates led</span></div><div><strong>1,400+</strong><span>SKUs STABILIZED</span></div></div></div><div class="hero-portrait"><img src="https://static.wixstatic.com/media/209c5a_d3d79b48b56b4dbb99902d4a39502ca6~mv2.jpeg" alt="Jason Connor" loading="eager"><div class="portrait-caption"><strong>Jason Connor</strong><span>Temperance, MI</span></div></div></div></section>
 <section class="section bone"><div class="container philosophy-layout reveal"><div><span class="philosophy-number">01 / OPERATING PHILOSOPHY</span><h2 class="philosophy-quote">Control the operation before the operation controls you.</h2></div><div class="question-list"><div class="question-row"><span>01</span><strong>What needs to ship?</strong><span>Demand</span></div><div class="question-row"><span>02</span><strong>What is already late?</strong><span>Risk</span></div><div class="question-row"><span>03</span><strong>What material is missing?</strong><span>Constraint</span></div><div class="question-row"><span>04</span><strong>What can run right now?</strong><span>Execution</span></div><div class="question-row"><span>05</span><strong>Where is capacity tight?</strong><span>Capacity</span></div><div class="question-row"><span>06</span><strong>Where does labor need to be?</strong><span>Deployment</span></div><div class="question-row"><span>07</span><strong>What changed since the plan was made?</strong><span>Reality</span></div></div></div></section>
@@ -125,5 +42,5 @@
 <section class="section paper"><div class="container"><div class="section-intro reveal"><div><p class="eyebrow">Career snapshot</p><h2 class="h2">Built across the full operating chain.</h2></div><p class="lead">Production, scheduling, materials, supplier management, inventory, and international assembly experience create a broader view of why manufacturing plans succeed or fail.</p></div><div class="timeline reveal"><div class="timeline-item"><span class="years">2023 — Present</span><h3>Production Manager</h3><div class="company">Bunting Bearings<span class="home-location"> · Holland, Ohio</span></div><p>Daily production leadership, labor and capacity deployment, schedule recovery, performance accountability, and real-time operating control.</p></div><div class="timeline-item"><span class="years">2021 — 2023</span><h3>Materials Manager</h3><div class="company">Axis Engineering<span class="home-location"> · Britton, Michigan</span></div><p>Materials management, receiving, inventory control, material flow, shortage visibility, and team leadership.</p></div><div class="timeline-item"><span class="years">2017 — 2021</span><h3>Master Scheduler</h3><div class="company">Axis Engineering<span class="home-location"> · Britton, Michigan</span></div><p>Supplier commitments, production and tooling schedules, risk recovery, sourcing, and supplier performance.</p></div><div class="timeline-item"><span class="years">2016 — 2017</span><h3>Production Scheduler</h3><div class="company">Bunting Bearings<span class="home-location"> · Holland, Ohio</span></div><p>CNC and manual machining schedules, machine loading, production sequencing, and backlog recovery.</p></div><div class="timeline-item"><span class="years">1998 — 2015</span><h3>Assembly Coordinator — Taiwan Division</h3><div class="company">MAC Valves<span class="home-location"> · Dundee, Michigan</span></div><p>International assembly operations, product growth, inventory management, and material-flow systems.</p></div></div><div class="hero-actions"><a class="button dark" href="experience.html">Full career experience</a></div></div></section>
 </main>
 <footer class="site-footer"><div class="container"><div class="footer-top"><div><p class="eyebrow light">Jason Connor</p><div class="footer-title">Manufacturing leadership built around people, clear priorities, disciplined execution, accountability, and measurable results.</div></div><nav class="footer-nav"><a href="results.html">Impact</a><a href="experience.html">Experience</a><a href="systems.html">Systems</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav></div><div class="footer-bottom"><span>© <span data-year></span> Jason Connor</span><span>Manufacturing Operations · Production Leadership · Operational Turnarounds</span></div></div></footer>
-<script src="script.js"></script>
+<script src="script.js?v=refresh-stable-20261010-0258"></script>
 </body></html>
