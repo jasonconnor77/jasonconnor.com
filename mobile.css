@@ -11,3 +11,31 @@
 @import url('mobile-targeted-restores.css?v=home-root-20261010-1207');
 @import url('mobile-header-sticky.css?v=jc-original-smooth-20261010-1220');
 @import url('logo-final.css?v=approved-20261010-2105');
+
+/* FINAL MOBILE RESULTS POSITIONING ONLY — keep existing type/color/size unchanged. */
+@media (max-width:720px){
+  html body .section.navy .metric-row{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    column-gap:0!important;
+    row-gap:12px!important;
+    align-items:start!important;
+  }
+  html body .section.navy .metric-row .metric-no{
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-self:start!important;
+    text-align:left!important;
+  }
+  html body .section.navy .metric-row .metric-value{
+    grid-column:1!important;
+    grid-row:2!important;
+    justify-self:start!important;
+    text-align:left!important;
+  }
+  html body .section.navy .metric-row p{
+    grid-column:1!important;
+    grid-row:3!important;
+    width:100%!important;
+  }
+}
