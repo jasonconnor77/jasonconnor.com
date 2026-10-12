@@ -164,11 +164,11 @@
     margin-bottom:42px!important;
   }
 
-  /* Impact: compact metric rows instead of desktop-sized empty bands */
+  /* Results: stack label, result, then description on mobile only */
   .section.navy .metric-row{
     display:grid!important;
-    grid-template-columns:minmax(0,1fr) auto!important;
-    gap:10px 14px!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:10px!important;
     align-items:baseline!important;
     min-height:0!important;
     padding:26px 0!important;
@@ -181,15 +181,15 @@
     white-space:nowrap!important;
   }
   .section.navy .metric-row .metric-value{
-    grid-column:2!important;
-    grid-row:1!important;
-    justify-self:end!important;
+    grid-column:1!important;
+    grid-row:2!important;
+    justify-self:start!important;
     font-size:clamp(38px,11vw,48px)!important;
     white-space:nowrap!important;
   }
   .section.navy .metric-row p{
-    grid-column:1 / -1!important;
-    grid-row:2!important;
+    grid-column:1!important;
+    grid-row:3!important;
     margin:0!important;
     font-size:15px!important;
     line-height:1.48!important;
