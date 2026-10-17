@@ -31,7 +31,7 @@
 
   /* Draw the mobile descriptor exactly once. */
   html body header.site-header .nav-shell a.brand .brand-text::after{
-    content:"Manufacturing Operations\A Production Leadership\A Operational Turnarounds"!important;
+    content:"Manufacturing Leadership\A Production Planning & Scheduling\A Operational Execution"!important;
     display:block!important;
     margin-top:6px!important;
     white-space:pre-line!important;
