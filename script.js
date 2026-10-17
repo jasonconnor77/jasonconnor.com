@@ -81,8 +81,10 @@
 
   /* Site-wide brand descriptor. */
   const descriptor = 'Manufacturing Leadership · Production Scheduling · Operational Execution';
+  const heroDescriptor = 'Manufacturing Leadership | Production Scheduling | Operational Execution';
   document.querySelectorAll('.brand-text span').forEach(el => { el.textContent = descriptor; });
   document.querySelectorAll('.footer-bottom>span:last-child').forEach(el => { el.textContent = descriptor; });
+  document.querySelectorAll('.hero-copy > .eyebrow.light').forEach(el => { el.textContent = heroDescriptor; });
 
   /* Force the mobile three-line descriptor to match the site-wide wording. */
   const mobileDescriptorStyle = document.createElement('style');
