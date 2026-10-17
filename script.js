@@ -80,7 +80,7 @@
   if (year) year.textContent = new Date().getFullYear();
 
   /* Site-wide brand descriptor. */
-  const descriptor = 'Manufacturing Operations · Production Leadership · Operational Turnarounds';
+  const descriptor = 'Manufacturing Leadership · Production Planning & Scheduling · Operational Execution';
   document.querySelectorAll('.brand-text span').forEach(el => { el.textContent = descriptor; });
   document.querySelectorAll('.footer-bottom>span:last-child').forEach(el => { el.textContent = descriptor; });
 
