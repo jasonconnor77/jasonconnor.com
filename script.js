@@ -80,9 +80,14 @@
   if (year) year.textContent = new Date().getFullYear();
 
   /* Site-wide brand descriptor. */
-  const descriptor = 'Manufacturing Leadership · Production Planning & Scheduling · Operational Execution';
+  const descriptor = 'Manufacturing Leadership · Production Scheduling · Operational Execution';
   document.querySelectorAll('.brand-text span').forEach(el => { el.textContent = descriptor; });
   document.querySelectorAll('.footer-bottom>span:last-child').forEach(el => { el.textContent = descriptor; });
+
+  /* Force the mobile three-line descriptor to match the site-wide wording. */
+  const mobileDescriptorStyle = document.createElement('style');
+  mobileDescriptorStyle.textContent = '@media(max-width:720px){html body .site-header .brand-text > span::after{content:"Manufacturing Leadership\\A Production Scheduling\\A Operational Execution"!important;}}';
+  document.head.appendChild(mobileDescriptorStyle);
 
   /* Keep Jason Connor attached to the footer statement on every page. */
   document.querySelectorAll('.footer-top>div:first-child').forEach(block => {
