@@ -7,255 +7,91 @@
   <title>Bunting Bearings — Job Clock Scanner</title>
   <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
   <style>
-    :root{
-      --bg:#05070b;--panel:#121827;--gold:#d4af37;--gold2:#f9eebc;
-      --text:#fff;--muted:#cbd5e1;--green:#22c55e;--red:#ef4444;
-      --safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;overflow:hidden}
-    body{padding-top:var(--safe-top);padding-bottom:var(--safe-bottom)}
-    .shell{height:100%;display:flex;flex-direction:column}
+    :root{--bg:#05070b;--panel:#121827;--gold:#d4af37;--gold2:#f9eebc;--text:#fff;--muted:#cbd5e1;--green:#22c55e;--red:#ef4444;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
+    *{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;overflow:hidden}
+    body{padding-top:var(--safe-top);padding-bottom:var(--safe-bottom)} .shell{height:100%;display:flex;flex-direction:column}
     .top{padding:14px 16px 12px;border-bottom:1px solid rgba(255,255,255,.12);background:#090d15;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{min-width:0}
-    .eyebrow{font-size:11px;font-weight:1000;letter-spacing:1.7px;color:var(--gold2)}
-    h1{margin:3px 0 0;font-size:20px;line-height:1.1;font-weight:1000}
+    .eyebrow{font-size:11px;font-weight:1000;letter-spacing:1.7px;color:var(--gold2)} h1{margin:3px 0 0;font-size:20px;line-height:1.1;font-weight:1000}
     .close{width:46px;height:46px;flex:0 0 46px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);color:#fff;font-size:22px;font-weight:900}
-    .intro{padding:12px 16px 10px}
-    .intro strong{display:block;font-size:17px}
-    .intro span{display:block;margin-top:3px;color:var(--muted);font-size:13px;font-weight:750}
-    #reader{flex:1;min-height:0;background:#000;position:relative}
-    #reader video{object-fit:cover!important}
-    .scanGuide{position:absolute;left:8%;right:8%;top:50%;transform:translateY(-50%);height:32%;max-height:190px;border:3px solid var(--gold);border-radius:18px;pointer-events:none;z-index:20;box-shadow:0 0 0 9999px rgba(0,0,0,.20);display:none}
-    .scanGuide.show{display:block}
-    .laser{position:absolute;left:3%;right:3%;top:50%;height:2px;background:#ef4444;box-shadow:0 0 10px #ef4444;animation:sweep 1.4s ease-in-out infinite alternate}
-    @keyframes sweep{from{transform:translateY(-55px)}to{transform:translateY(55px)}}
-    .idle{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;color:#94a3b8;font-weight:850;font-size:15px}
-    .idle.hidden{display:none}
+    .intro{padding:12px 16px 10px}.intro strong{display:block;font-size:17px}.intro span{display:block;margin-top:3px;color:var(--muted);font-size:13px;font-weight:750}
+    .readerWrap{flex:1;min-height:0;position:relative;background:#000}.reader{width:100%;height:100%;background:#000}.reader video{object-fit:cover!important;width:100%!important;height:100%!important}
+    .scanGuide{display:none;position:absolute;left:8%;right:8%;top:50%;transform:translateY(-50%);height:32%;max-height:190px;border:3px solid var(--gold);border-radius:18px;pointer-events:none;z-index:20;box-shadow:0 0 0 9999px rgba(0,0,0,.20)}
+    .scanGuide.on{display:block}.laser{position:absolute;left:3%;right:3%;top:50%;height:2px;background:#ef4444;box-shadow:0 0 10px #ef4444;animation:sweep 1.4s ease-in-out infinite alternate}@keyframes sweep{from{transform:translateY(-55px)}to{transform:translateY(55px)}}
+    .idle{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;color:#94a3b8;font-weight:850;font-size:15px;line-height:1.4}.idle.hidden{display:none}
     .bottom{padding:12px 16px calc(14px + var(--safe-bottom));background:#090d15;border-top:1px solid rgba(255,255,255,.12)}
-    .status{min-height:48px;border-radius:14px;background:var(--panel);display:flex;align-items:center;justify-content:center;text-align:center;padding:11px 13px;font-size:14px;font-weight:900;color:var(--muted)}
-    .status.good{border:1px solid rgba(34,197,94,.55);color:#dcfce7}
-    .status.bad{border:1px solid rgba(239,68,68,.55);color:#fee2e2}
-    .start{width:100%;min-height:66px;border:0;border-radius:17px;margin-top:10px;background:linear-gradient(90deg,var(--gold),var(--gold2));color:#111827;font-size:20px;font-weight:1000;letter-spacing:.3px;box-shadow:0 12px 30px rgba(0,0,0,.35)}
-    .start:disabled{opacity:.55}
+    .status{min-height:54px;border-radius:14px;background:var(--panel);display:flex;align-items:center;justify-content:center;text-align:center;padding:11px 13px;font-size:13px;font-weight:900;color:var(--muted);line-height:1.3}
+    .status.good{border:1px solid rgba(34,197,94,.55);color:#dcfce7}.status.bad{border:1px solid rgba(239,68,68,.65);color:#fee2e2}.status.warn{border:1px solid rgba(212,175,55,.65);color:#fef3c7}
+    .start{width:100%;min-height:62px;border:0;border-radius:15px;margin-top:10px;background:linear-gradient(90deg,var(--gold),var(--gold2));color:#111827;font-size:18px;font-weight:1000}.start:disabled{opacity:.55}
+    .manual{margin-top:9px;text-align:center;font-size:12px;color:#94a3b8;font-weight:750}.diag{margin-top:8px;text-align:center;font-size:10px;color:#64748b;font-weight:700}
     .hidden{display:none!important}
-    .manual{margin-top:9px;text-align:center;font-size:12px;color:#94a3b8;font-weight:750}
   </style>
 </head>
 <body>
 <div class="shell">
-  <div class="top">
-    <div class="brand">
-      <div class="eyebrow">BUNTING BEARINGS</div>
-      <h1 id="title">JOB CLOCK SCANNER</h1>
-    </div>
-    <button id="closeBtn" class="close" type="button" aria-label="Close">✕</button>
-  </div>
-
-  <div class="intro">
-    <strong id="instruction">Point the rear camera at the barcode.</strong>
-    <span>Tap the button below to open the camera and begin scanning.</span>
-  </div>
-
-  <div id="reader">
-    <div id="idleMessage" class="idle">CAMERA IS OFF<br><br>Tap OPEN CAMERA TO SCAN NOW.</div>
-    <div id="scanGuide" class="scanGuide"><div class="laser"></div></div>
-  </div>
-
-  <div class="bottom">
-    <div id="status" class="status">READY TO SCAN</div>
-    <button id="startBtn" class="start" type="button">OPEN CAMERA TO SCAN NOW</button>
-    <div class="manual">Live barcode scanner — no picture required.</div>
-  </div>
+  <div class="top"><div><div class="eyebrow">BUNTING BEARINGS</div><h1 id="title">JOB CLOCK SCANNER</h1></div><button id="closeBtn" class="close" type="button" aria-label="Close">✕</button></div>
+  <div class="intro"><strong id="instruction">Point the rear camera at the barcode.</strong><span>The scanner closes automatically when the barcode is read.</span></div>
+  <div class="readerWrap"><div id="reader" class="reader"></div><div id="idle" class="idle">Tap OPEN CAMERA & SCAN NOW below. Your iPhone should ask for camera access the first time.</div><div id="guide" class="scanGuide"><div class="laser"></div></div></div>
+  <div class="bottom"><div id="status" class="status warn">CAMERA IS OFF — TAP OPEN CAMERA & SCAN NOW.</div><button id="startBtn" class="start" type="button">OPEN CAMERA & SCAN NOW</button><div class="manual">Live barcode scanner — no picture required.</div><div id="diag" class="diag">V261021M7</div></div>
 </div>
-
 <script>
 (function(){
-  'use strict';
-
-  const qs=new URLSearchParams(location.search);
-  const target=(qs.get('target')||'badge').toLowerCase()==='shop'?'shop':'badge';
-  const token=qs.get('token')||'';
-
-  const title=document.getElementById('title');
-  const instruction=document.getElementById('instruction');
-  const status=document.getElementById('status');
-  const startBtn=document.getElementById('startBtn');
-  const closeBtn=document.getElementById('closeBtn');
-  const idleMessage=document.getElementById('idleMessage');
-  const scanGuide=document.getElementById('scanGuide');
-
-  let scanner=null;
-  let running=false;
-  let finished=false;
-
-  title.textContent=target==='badge'?'SCAN EMPLOYEE BADGE':'SCAN SHOP ORDER';
-  instruction.textContent=target==='badge'
-    ? 'Point the rear camera at the employee badge barcode.'
-    : 'Point the rear camera at the shop order barcode.';
-
-  function setStatus(text,kind){
-    status.textContent=text;
-    status.classList.remove('good','bad');
-    if(kind) status.classList.add(kind);
+'use strict';
+const qs=new URLSearchParams(location.search), target=(qs.get('target')||'badge').toLowerCase()==='shop'?'shop':'badge', token=qs.get('token')||'';
+const title=document.getElementById('title'), instruction=document.getElementById('instruction'), status=document.getElementById('status'), startBtn=document.getElementById('startBtn'), closeBtn=document.getElementById('closeBtn'), idle=document.getElementById('idle'), guide=document.getElementById('guide'), diag=document.getElementById('diag');
+let scanner=null,running=false,finished=false,busy=false;
+title.textContent=target==='badge'?'SCAN EMPLOYEE BADGE':'SCAN SHOP ORDER'; instruction.textContent=target==='badge'?'Point the rear camera at the employee badge barcode.':'Point the rear camera at the shop order barcode.';
+function setStatus(text,kind){status.textContent=text;status.classList.remove('good','bad','warn');if(kind)status.classList.add(kind)}
+function errText(err){const name=String(err&&err.name||'ERROR'), msg=String(err&&err.message||err||'').replace(/\s+/g,' ').trim();return name+(msg?' — '+msg.slice(0,180):'')}
+function cameraHelp(err){
+  const name=String(err&&err.name||'');
+  if(name==='NotAllowedError'||name==='SecurityError') return 'CAMERA ACCESS IS BLOCKED. ON IPHONE: OPEN SAFARI WEBSITE SETTINGS FOR JASONCONNOR.COM → CAMERA → ALLOW, THEN TRY AGAIN.';
+  if(name==='NotFoundError'||name==='DevicesNotFoundError') return 'NO CAMERA WAS FOUND BY SAFARI.';
+  if(name==='NotReadableError'||name==='TrackStartError') return 'THE CAMERA IS BUSY OR UNAVAILABLE. CLOSE OTHER CAMERA/VIDEO APPS OR TABS, THEN TRY AGAIN.';
+  if(name==='OverconstrainedError'||name==='ConstraintNotSatisfiedError') return 'THE REAR-CAMERA REQUEST WAS REJECTED. TAP OPEN CAMERA & SCAN NOW AGAIN; THE SCANNER WILL TRY ANY AVAILABLE CAMERA.';
+  return 'CAMERA COULD NOT START. '+errText(err);
+}
+async function stop(){if(scanner){try{if(running)await scanner.stop()}catch(_){}try{await scanner.clear()}catch(_){} }scanner=null;running=false;guide.classList.remove('on');idle.classList.remove('hidden')}
+function sendResult(value){if(finished)return;finished=true;const msg={source:'BUNTING_JOB_CLOCK_SCANNER',barcode:String(value||'').trim(),target,token};try{if(window.opener&&!window.opener.closed)window.opener.postMessage(msg,'*')}catch(_){}setStatus('BARCODE READ — RETURNING TO JOB CLOCK…','good');if(navigator.vibrate)try{navigator.vibrate(70)}catch(_){}stop().finally(()=>setTimeout(()=>{try{window.close()}catch(_){}setTimeout(()=>setStatus('SCAN COMPLETE. RETURN TO THE JOB CLOCK TAB.','good'),500)},180))}
+async function requestPermissionFromTap(){
+  if(!window.isSecureContext) throw new DOMException('This page is not in a secure HTTPS context.','SecurityError');
+  if(!navigator.mediaDevices||typeof navigator.mediaDevices.getUserMedia!=='function') throw new DOMException('This browser does not expose camera access to web pages.','NotSupportedError');
+  let stream;
+  try{stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:'environment'}}})}
+  catch(firstErr){
+    if(String(firstErr&&firstErr.name)==='OverconstrainedError') stream=await navigator.mediaDevices.getUserMedia({audio:false,video:true});
+    else throw firstErr;
   }
-
-  function browserName_(){
-    const ua=navigator.userAgent||'';
-    if(/CriOS/i.test(ua)) return 'Chrome on iPhone';
-    if(/FxiOS/i.test(ua)) return 'Firefox on iPhone';
-    if(/EdgiOS/i.test(ua)) return 'Edge on iPhone';
-    if(/Safari/i.test(ua)) return 'Safari';
-    return 'this browser';
-  }
-
-  async function requestCameraPermission_(){
-    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
-      throw new Error('LIVE CAMERA IS NOT AVAILABLE IN '+browserName_().toUpperCase()+'. OPEN THIS PAGE IN SAFARI.');
+  try{stream.getTracks().forEach(t=>t.stop())}catch(_){}
+}
+async function chooseCamera(){
+  try{
+    const cams=await Html5Qrcode.getCameras();
+    if(!Array.isArray(cams)||!cams.length)return null;
+    const rear=cams.find(c=>/back|rear|environment|wide/i.test(String(c.label||'')));
+    return (rear||cams[cams.length-1]).id||null;
+  }catch(_){return null}
+}
+async function start(){
+  if(busy||running||finished)return;busy=true;startBtn.disabled=true;setStatus('REQUESTING CAMERA ACCESS…','warn');diag.textContent='V261021M7 · '+(navigator.userAgent.includes('Safari')?'WEBKIT':'BROWSER');
+  try{
+    if(typeof Html5Qrcode==='undefined') throw new Error('BARCODE SCANNER LIBRARY DID NOT LOAD.');
+    await requestPermissionFromTap();
+    setStatus('CAMERA ALLOWED — STARTING REAR CAMERA…','warn');
+    scanner=new Html5Qrcode('reader',{formatsToSupport:[Html5QrcodeSupportedFormats.CODE_128,Html5QrcodeSupportedFormats.CODE_39,Html5QrcodeSupportedFormats.CODE_93,Html5QrcodeSupportedFormats.ITF,Html5QrcodeSupportedFormats.EAN_13,Html5QrcodeSupportedFormats.EAN_8,Html5QrcodeSupportedFormats.UPC_A,Html5QrcodeSupportedFormats.UPC_E]});
+    const config={fps:12,qrbox:(w,h)=>({width:Math.max(220,Math.min(w*.90,520)),height:Math.max(90,Math.min(h*.28,180))}),disableFlip:false};
+    const cameraId=await chooseCamera();
+    try{await scanner.start(cameraId||{facingMode:'environment'},config,decoded=>sendResult(decoded),()=>{})}
+    catch(primaryErr){
+      try{await scanner.clear()}catch(_){}
+      scanner=new Html5Qrcode('reader',{formatsToSupport:[Html5QrcodeSupportedFormats.CODE_128,Html5QrcodeSupportedFormats.CODE_39,Html5QrcodeSupportedFormats.CODE_93,Html5QrcodeSupportedFormats.ITF,Html5QrcodeSupportedFormats.EAN_13,Html5QrcodeSupportedFormats.EAN_8,Html5QrcodeSupportedFormats.UPC_A,Html5QrcodeSupportedFormats.UPC_E]});
+      await scanner.start({facingMode:'environment'},config,decoded=>sendResult(decoded),()=>{});
     }
-
-    const stream=await navigator.mediaDevices.getUserMedia({
-      audio:false,
-      video:{facingMode:{ideal:'environment'}}
-    });
-
-    try{
-      stream.getTracks().forEach(t=>t.stop());
-    }catch(_){}
-  }
-
-  async function chooseRearCamera_(){
-    const cameras=await Html5Qrcode.getCameras();
-    if(!cameras || !cameras.length) throw new Error('NO CAMERA WAS FOUND.');
-
-    return cameras.find(c=>/back|rear|environment/i.test(c.label||'')) || cameras[cameras.length-1];
-  }
-
-  function sendResult(value){
-    if(finished) return;
-    finished=true;
-
-    const msg={
-      source:'BUNTING_JOB_CLOCK_SCANNER',
-      barcode:String(value||'').trim(),
-      target,
-      token
-    };
-
-    try{
-      if(window.opener && !window.opener.closed){
-        window.opener.postMessage(msg,'*');
-      }
-    }catch(_){}
-
-    setStatus('BARCODE READ — RETURNING TO JOB CLOCK…','good');
-    if(navigator.vibrate) try{navigator.vibrate(70)}catch(_){}
-
-    stop().finally(()=>{
-      setTimeout(()=>{
-        try{window.close()}catch(_){}
-        setTimeout(()=>setStatus('SCAN COMPLETE. RETURN TO THE JOB CLOCK TAB.','good'),700);
-      },250);
-    });
-  }
-
-  async function stop(){
-    if(!scanner) return;
-    try{ if(running) await scanner.stop(); }catch(_){}
-    try{ await scanner.clear(); }catch(_){}
-    running=false;
-    scanGuide.classList.remove('show');
-    idleMessage.classList.remove('hidden');
-  }
-
-  function cameraErrorMessage_(err){
-    const name=String(err?.name||'');
-    const msg=String(err?.message||err||'').trim();
-
-    if(name==='NotAllowedError' || /permission|denied|not allowed/i.test(msg)){
-      return 'CAMERA ACCESS WAS BLOCKED. ALLOW CAMERA ACCESS FOR THIS SITE, THEN TAP OPEN CAMERA TO SCAN NOW AGAIN.';
-    }
-    if(name==='NotFoundError' || /no camera|not found/i.test(msg)){
-      return 'NO CAMERA WAS FOUND ON THIS DEVICE.';
-    }
-    if(name==='NotReadableError' || /in use|could not start|not readable/i.test(msg)){
-      return 'THE CAMERA IS BUSY OR COULD NOT OPEN. CLOSE OTHER CAMERA APPS AND TRY AGAIN.';
-    }
-    return (msg || 'CAMERA COULD NOT START.') + ' TAP OPEN CAMERA TO SCAN NOW TO RETRY.';
-  }
-
-  async function start(){
-    if(running || finished) return;
-
-    startBtn.disabled=true;
-    startBtn.textContent='OPENING CAMERA…';
-    setStatus('REQUESTING CAMERA ACCESS…');
-
-    try{
-      if(typeof Html5Qrcode==='undefined') throw new Error('BARCODE SCANNER LIBRARY DID NOT LOAD.');
-
-      await requestCameraPermission_();
-      const camera=await chooseRearCamera_();
-
-      scanner=new Html5Qrcode('reader',{
-        useBarCodeDetectorIfSupported:true,
-        formatsToSupport:[
-          Html5QrcodeSupportedFormats.CODE_128,
-          Html5QrcodeSupportedFormats.CODE_39,
-          Html5QrcodeSupportedFormats.CODE_93,
-          Html5QrcodeSupportedFormats.ITF,
-          Html5QrcodeSupportedFormats.EAN_13,
-          Html5QrcodeSupportedFormats.EAN_8,
-          Html5QrcodeSupportedFormats.UPC_A,
-          Html5QrcodeSupportedFormats.UPC_E
-        ]
-      });
-
-      const config={
-        fps:15,
-        qrbox:(w,h)=>({
-          width:Math.max(220,Math.min(w*.90,520)),
-          height:Math.max(90,Math.min(h*.28,180))
-        }),
-        aspectRatio:1.777778,
-        disableFlip:false
-      };
-
-      idleMessage.classList.add('hidden');
-      scanGuide.classList.add('show');
-
-      await scanner.start(
-        camera.id,
-        config,
-        decoded=>sendResult(decoded),
-        ()=>{}
-      );
-
-      running=true;
-      setStatus('SCANNING — HOLD BARCODE INSIDE THE GOLD BOX.');
-      startBtn.classList.add('hidden');
-
-    }catch(err){
-      console.error(err);
-      running=false;
-      scanGuide.classList.remove('show');
-      idleMessage.classList.remove('hidden');
-      setStatus(cameraErrorMessage_(err),'bad');
-      startBtn.disabled=false;
-      startBtn.textContent='OPEN CAMERA TO SCAN NOW';
-      startBtn.classList.remove('hidden');
-    }
-  }
-
-  closeBtn.addEventListener('click',()=>{
-    stop().finally(()=>{
-      try{window.close()}catch(_){history.back()}
-    });
-  });
-
-  startBtn.addEventListener('click',start);
-  window.addEventListener('pagehide',()=>stop());
-  window.addEventListener('beforeunload',()=>stop());
+    running=true;idle.classList.add('hidden');guide.classList.add('on');setStatus('SCANNING — HOLD THE BARCODE INSIDE THE GOLD BOX.','good');startBtn.textContent='CAMERA RUNNING';startBtn.classList.add('hidden');
+  }catch(err){
+    console.error('Camera start failed',err);await stop();setStatus(cameraHelp(err),'bad');diag.textContent='V261021M7 · '+errText(err);startBtn.textContent='OPEN CAMERA & SCAN AGAIN';startBtn.classList.remove('hidden');startBtn.disabled=false;
+  }finally{busy=false;if(!running)startBtn.disabled=false}
+}
+startBtn.addEventListener('click',start);closeBtn.addEventListener('click',()=>stop().finally(()=>{try{window.close()}catch(_){history.back()}}));window.addEventListener('pagehide',stop);window.addEventListener('beforeunload',stop);
 })();
 </script>
 </body>
