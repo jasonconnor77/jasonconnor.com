@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>Bunting Bearings — Job Clock Scanner</title>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <style>
+    :root{
+      --bg:#05070b;--panel:#121827;--panel2:#1b2435;--gold:#d4af37;--gold2:#f9eebc;
+      --text:#fff;--muted:#cbd5e1;--green:#22c55e;--red:#ef4444;
+      --safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;overflow:hidden}
+    body{padding-top:var(--safe-top);padding-bottom:var(--safe-bottom)}
+    .shell{height:100%;display:flex;flex-direction:column}
+    .top{padding:14px 16px 12px;border-bottom:1px solid rgba(255,255,255,.12);background:#090d15;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{min-width:0}
+    .eyebrow{font-size:11px;font-weight:1000;letter-spacing:1.7px;color:var(--gold2)}
+    h1{margin:3px 0 0;font-size:20px;line-height:1.1;font-weight:1000}
+    .close{width:46px;height:46px;flex:0 0 46px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.07);color:#fff;font-size:22px;font-weight:900}
+    .intro{padding:12px 16px 10px}
+    .intro strong{display:block;font-size:17px}
+    .intro span{display:block;margin-top:3px;color:var(--muted);font-size:13px;font-weight:750}
+    #reader{flex:1;min-height:0;background:#000;position:relative}
+    #reader video{object-fit:cover!important}
+    #reader__dashboard_section_csr button,#reader__dashboard_section_swaplink{font:inherit!important}
+    .scanGuide{position:absolute;left:8%;right:8%;top:50%;transform:translateY(-50%);height:32%;max-height:190px;border:3px solid var(--gold);border-radius:18px;pointer-events:none;z-index:20;box-shadow:0 0 0 9999px rgba(0,0,0,.20)}
+    .laser{position:absolute;left:3%;right:3%;top:50%;height:2px;background:#ef4444;box-shadow:0 0 10px #ef4444;animation:sweep 1.4s ease-in-out infinite alternate}
+    @keyframes sweep{from{transform:translateY(-55px)}to{transform:translateY(55px)}}
+    .bottom{padding:12px 16px calc(14px + var(--safe-bottom));background:#090d15;border-top:1px solid rgba(255,255,255,.12)}
+    .status{min-height:48px;border-radius:14px;background:var(--panel);display:flex;align-items:center;justify-content:center;text-align:center;padding:11px 13px;font-size:14px;font-weight:900;color:var(--muted)}
+    .status.good{border:1px solid rgba(34,197,94,.55);color:#dcfce7}
+    .status.bad{border:1px solid rgba(239,68,68,.55);color:#fee2e2}
+    .start{width:100%;min-height:56px;border:0;border-radius:15px;margin-top:10px;background:linear-gradient(90deg,var(--gold),var(--gold2));color:#111827;font-size:17px;font-weight:1000}
+    .hidden{display:none!important}
+    .manual{margin-top:9px;text-align:center;font-size:12px;color:#94a3b8;font-weight:750}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <div class="top">
+    <div class="brand">
+      <div class="eyebrow">BUNTING BEARINGS</div>
+      <h1 id="title">JOB CLOCK SCANNER</h1>
+    </div>
+    <button id="closeBtn" class="close" type="button" aria-label="Close">✕</button>
+  </div>
+  <div class="intro">
+    <strong id="instruction">Point the rear camera at the barcode.</strong>
+    <span>The scanner closes automatically when the barcode is read.</span>
+  </div>
+  <div id="reader">
+    <div class="scanGuide"><div class="laser"></div></div>
+  </div>
+  <div class="bottom">
+    <div id="status" class="status">STARTING CAMERA…</div>
+    <button id="startBtn" class="start hidden" type="button">START CAMERA</button>
+    <div class="manual">Live scanner — no picture required.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  const qs=new URLSearchParams(location.search);
+  const target=(qs.get('target')||'badge').toLowerCase()==='shop'?'shop':'badge';
+  const token=qs.get('token')||'';
+  const title=document.getElementById('title');
+  const instruction=document.getElementById('instruction');
+  const status=document.getElementById('status');
+  const startBtn=document.getElementById('startBtn');
+  const closeBtn=document.getElementById('closeBtn');
+  let scanner=null, running=false, finished=false;
+
+  title.textContent=target==='badge'?'SCAN EMPLOYEE BADGE':'SCAN SHOP ORDER';
+  instruction.textContent=target==='badge'
+    ? 'Point the rear camera at the employee badge barcode.'
+    : 'Point the rear camera at the shop order barcode.';
+
+  function setStatus(text,kind){
+    status.textContent=text;
+    status.classList.remove('good','bad');
+    if(kind) status.classList.add(kind);
+  }
+
+  function sendResult(value){
+    if(finished) return;
+    finished=true;
+    const msg={
+      source:'BUNTING_JOB_CLOCK_SCANNER',
+      barcode:String(value||'').trim(),
+      target,
+      token
+    };
+    try{
+      if(window.opener && !window.opener.closed){
+        window.opener.postMessage(msg,'*');
+      }
+    }catch(_){}
+    setStatus('BARCODE READ — RETURNING TO JOB CLOCK…','good');
+    if(navigator.vibrate) try{navigator.vibrate(70)}catch(_){}
+    stop().finally(()=>{
+      setTimeout(()=>{
+        try{window.close()}catch(_){}
+        setTimeout(()=>{setStatus('SCAN COMPLETE. RETURN TO THE JOB CLOCK TAB.','good')},700);
+      },250);
+    });
+  }
+
+  async function stop(){
+    if(!scanner) return;
+    try{ if(running) await scanner.stop(); }catch(_){}
+    try{ await scanner.clear(); }catch(_){}
+    running=false;
+  }
+
+  async function start(){
+    if(running || finished) return;
+    startBtn.classList.add('hidden');
+    setStatus('STARTING REAR CAMERA…');
+    try{
+      if(typeof Html5Qrcode==='undefined') throw new Error('Barcode scanner library did not load.');
+      scanner=new Html5Qrcode('reader',{
+        useBarCodeDetectorIfSupported:true,
+        formatsToSupport:[
+          Html5QrcodeSupportedFormats.CODE_128,
+          Html5QrcodeSupportedFormats.CODE_39,
+          Html5QrcodeSupportedFormats.CODE_93,
+          Html5QrcodeSupportedFormats.ITF,
+          Html5QrcodeSupportedFormats.EAN_13,
+          Html5QrcodeSupportedFormats.EAN_8,
+          Html5QrcodeSupportedFormats.UPC_A,
+          Html5QrcodeSupportedFormats.UPC_E
+        ]
+      });
+      const config={
+        fps:15,
+        qrbox:(w,h)=>({width:Math.max(220,Math.min(w*.90,520)),height:Math.max(90,Math.min(h*.28,180))}),
+        aspectRatio:1.777778,
+        disableFlip:false
+      };
+      await scanner.start(
+        {facingMode:{ideal:'environment'}},
+        config,
+        decoded=>sendResult(decoded),
+        ()=>{}
+      );
+      running=true;
+      setStatus('SCANNING — HOLD BARCODE INSIDE THE GOLD BOX.');
+    }catch(err){
+      console.error(err);
+      running=false;
+      setStatus('CAMERA DID NOT START. TAP START CAMERA AND ALLOW CAMERA ACCESS.','bad');
+      startBtn.classList.remove('hidden');
+    }
+  }
+
+  closeBtn.addEventListener('click',()=>stop().finally(()=>{try{window.close()}catch(_){history.back()}}));
+  startBtn.addEventListener('click',start);
+  window.addEventListener('pagehide',()=>{stop()});
+  window.addEventListener('beforeunload',()=>{stop()});
+  setTimeout(start,80);
+})();
+</script>
+</body>
+</html>
