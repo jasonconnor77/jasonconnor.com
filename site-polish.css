@@ -107,7 +107,20 @@
 .metric-value{white-space:nowrap}
 
 /* Interior page scale */
-.page-hero{padding:126px 0 58px}
+.page-hero{padding:168px 0 58px}
+/* Clear fixed desktop navigation without restoring the oversized gap below each hero. */
+@media(min-width:721px){
+  html body .site-header,
+  html body .site-header.scrolled{
+    background:var(--navy950)!important;
+    backdrop-filter:none!important;
+  }
+  html body .experience-block .experience-meta{
+    background:var(--paper)!important;
+    isolation:isolate!important;
+    z-index:30!important;
+  }
+}
 /* Match Home's compact transition from the navy introduction to substantive content. */
 #main > .page-hero + .section{padding-top:42px!important}
 @media(max-width:720px){
