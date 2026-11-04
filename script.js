@@ -79,18 +79,6 @@
   const year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
 
-  /* Site-wide brand descriptor. */
-  const descriptor = 'Production Leadership · Planning & Scheduling · Operational Execution';
-  const heroDescriptor = 'Production Leadership | Planning & Scheduling | Operational Execution';
-  document.querySelectorAll('.brand-text span').forEach(el => { el.textContent = descriptor; });
-  document.querySelectorAll('.footer-bottom>span:last-child').forEach(el => { el.textContent = descriptor; });
-  document.querySelectorAll('.hero-copy > .eyebrow.light').forEach(el => { el.textContent = heroDescriptor; });
-
-  /* Force the mobile three-line descriptor to match the site-wide wording. */
-  const mobileDescriptorStyle = document.createElement('style');
-  mobileDescriptorStyle.textContent = '@media(max-width:720px){html body .site-header .brand-text > span::after{content:"Production Leadership\\A Planning & Scheduling\\A Operational Execution"!important;}}';
-  document.head.appendChild(mobileDescriptorStyle);
-
   /* Keep Jason Connor attached to the footer statement on every page. */
   document.querySelectorAll('.footer-top>div:first-child').forEach(block => {
     let label = block.querySelector('.eyebrow');
@@ -102,28 +90,4 @@
     label.textContent = 'Jason Connor';
   });
 
-  /* Stronger, more specific homepage Selected Work copy */
-  const caseDescriptions = [
-    'Led daily production, reset priorities around demand, material, labor, and capacity, and built real-time visibility across a large standard product line.',
-    'Reworked machine loading and sequencing around actual capacity, labor, material availability, downtime, and changing customer demand.',
-    'Redesigned receiving, staging, job-specific material organization, shortage visibility, and supplier follow-up to improve production readiness.',
-    'Supported rapid growth in SKU count, annual production volume, and inventory while maintaining tight material control and 99.2% inventory accuracy.'
-  ];
-  document.querySelectorAll('.case-grid .case>p').forEach((el, i) => {
-    if (caseDescriptions[i]) el.textContent = caseDescriptions[i];
-  });
-
-  /* Keep the final Home Systems conclusion wording consistent without rewriting card copy. */
-  const flowFinal = document.querySelector('.systems-band .flow-final');
-  if (flowFinal) {
-    const strong = flowFinal.querySelector('strong');
-    const span = flowFinal.querySelector('span');
-    if (strong) strong.textContent = 'The goal is faster, better operating decisions.';
-    if (span) span.textContent = 'A useful system turns ERP and shop-floor data into a clear answer managers can act on without digging through reports.';
-  }
-
-  /* Keep website footer aligned with the business-card brand language */
-  document.querySelectorAll('.footer-title').forEach(el => {
-    el.textContent = 'Manufacturing leadership built around people, clear priorities, disciplined execution, accountability, and measurable results.';
-  });
 })();
