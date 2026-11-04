@@ -107,7 +107,12 @@
 .metric-value{white-space:nowrap}
 
 /* Interior page scale */
-.page-hero{padding:132px 0 58px}
+.page-hero{padding:126px 0 58px}
+/* Match Home's compact transition from the navy introduction to substantive content. */
+#main > .page-hero + .section{padding-top:42px!important}
+@media(max-width:720px){
+  html body #main > .page-hero + .section{padding-top:32px!important}
+}
 .page-hero .h1{font-size:clamp(40px,4.4vw,64px);max-width:930px}
 .page-hero .lead{font-size:clamp(17px,1.5vw,21px);margin-top:20px}
 
