@@ -102,9 +102,6 @@
     label.textContent = 'Jason Connor';
   });
 
-  const skuLabel = document.querySelector('.hero-foot div:nth-child(3) span');
-  if (skuLabel) skuLabel.textContent = 'SKUs STABILIZED';
-
   /* Stronger, more specific homepage Selected Work copy */
   const caseDescriptions = [
     'Led daily production, reset priorities around demand, material, labor, and capacity, and built real-time visibility across a large standard product line.',
