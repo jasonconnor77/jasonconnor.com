@@ -58,6 +58,9 @@
 
 /* Keep mid-size desktop/tablet from getting crowded. */
 @media (min-width:721px) and (max-width:1000px){
+  .site-header .brand .brand-text > span{
+    display:block!important;
+  }
   .site-header .nav-shell{
     min-height:102px!important;
     gap:24px!important;

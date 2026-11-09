@@ -31,15 +31,15 @@
 
   /* Draw the mobile descriptor exactly once. */
   html body header.site-header .nav-shell a.brand .brand-text::after{
-    content:"PRODUCTION\A MATERIALS\A PLANNING LEADER"!important;
+    content:"PRODUCTION & MATERIALS LEADER\A SCHEDULING • PLANNING • DATA ANALYSIS"!important;
     display:block!important;
     margin-top:6px!important;
     white-space:pre-line!important;
     font-family:'Archivo',Arial,sans-serif!important;
-    font-size:12px!important;
-    line-height:1.25!important;
+    font-size:clamp(9px,2.35vw,10.5px)!important;
+    line-height:1.35!important;
     font-weight:650!important;
-    letter-spacing:.035em!important;
+    letter-spacing:0!important;
     text-transform:none!important;
     color:#D9AF88!important;
   }

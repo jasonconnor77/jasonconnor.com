@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,300..900&family=IBM+Plex+Mono:wght@400;500;600&display=block');
 @import url('mobile-base.css?v=opening-align-20261104');
-@import url('mobile-header-exact.css?v=pmp-20261104');
-@import url('mobile-polish.css?v=pmp-20261104');
+@import url('mobile-header-exact.css?v=resume-brand-20261109');
+@import url('mobile-polish.css?v=resume-brand-20261109');
 @import url('mobile-experience-sticky.css?v=20261008-1');
-@import url('desktop-header-scale.css?v=jc-logo-original-20261010-1235');
+@import url('desktop-header-scale.css?v=resume-brand-20261109');
 @import url('desktop-experience-sticky.css?v=20261009-1845');
 @import url('desktop-home-systems-tune.css?v=20261010-0315');
-@import url('mobile-final-fixes.css?v=pmp-20261104');
+@import url('mobile-final-fixes.css?v=resume-brand-20261109');
 @import url('site-polish.css?v=no-bleed-20261104');
 @import url('mobile-targeted-restores.css?v=hero-unified-20261109');
 @import url('mobile-header-sticky.css?v=jc-original-smooth-20261010-1220');
