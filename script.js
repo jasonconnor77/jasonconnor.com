@@ -35,7 +35,9 @@
     if (!header || !mobileHeaderQuery.matches) return;
     const height = Math.ceil(header.getBoundingClientRect().height);
     document.documentElement.style.setProperty('--jc-mobile-header-height', `${height}px`);
-    if (!mobileCompact) {
+    // Measure the expanded spacer once, never on each animation frame.
+    // Updating the spacer during expansion would move the entire page.
+    if (!mobileCompact && expandedHeaderHeight === 0) {
       expandedHeaderHeight = height;
       document.documentElement.style.setProperty('--jc-mobile-header-expanded-height', `${height}px`);
     }
@@ -68,7 +70,14 @@
     if (mobileHeaderQuery.matches && currentWidth !== lastMobileWidth) {
       mobileCompact = false;
       header?.classList.remove('mobile-compact');
-      scheduleHeaderHeightSync();
+      // On an actual width change (not Safari toolbar resizing), wait until
+      // the header's width/height transition settles to remeasure the spacer.
+      window.setTimeout(() => {
+        if (mobileHeaderQuery.matches && !mobileCompact) {
+          expandedHeaderHeight = 0;
+          scheduleHeaderHeightSync();
+        }
+      }, 400);
     }
     lastMobileWidth = currentWidth;
     updateHeader();
@@ -79,7 +88,10 @@
     scheduleHeaderHeightSync();
     updateHeader();
   });
-  document.fonts?.ready?.then(scheduleHeaderHeightSync);
+  document.fonts?.ready?.then(() => {
+    if (!mobileCompact && mobileHeaderQuery.matches) expandedHeaderHeight = 0;
+    scheduleHeaderHeightSync();
+  });
   updateHeader();
   syncHeaderHeights();
 
