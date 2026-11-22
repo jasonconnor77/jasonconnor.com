@@ -73,3 +73,74 @@
     display:none!important;
   }
 }
+
+/* 2026-11-22 mobile header correction.
+   The sticky full-size masthead obscured Career content as it scrolled; multiple
+   historical subtitle rules also clipped the final lines of the descriptor.
+   On phones, use one normal-flow masthead with its real intrinsic height. */
+@media(max-width:720px){
+  html body header.site-header,
+  html body header.site-header.scrolled{
+    position:relative!important;
+    inset:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+    background:#0C1B29!important;
+    backdrop-filter:none!important;
+    transition:none!important;
+    z-index:100!important;
+  }
+
+  html body header.site-header .nav-shell{
+    height:auto!important;
+    min-height:0!important;
+    padding:16px 0 18px!important;
+    align-items:center!important;
+    overflow:visible!important;
+  }
+  html body header.site-header .nav-shell a.brand,
+  html body header.site-header .nav-shell a.brand .brand-text{
+    height:auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+
+  /* Show real subtitle text, not old ::before/::after generated copies.
+     No fixed 48px height or hidden descendant may truncate the tagline. */
+  html body header.site-header .nav-shell a.brand .brand-text > span{
+    display:block!important;
+    position:static!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    margin:6px 0 0!important;
+    padding:0!important;
+    overflow:visible!important;
+    visibility:visible!important;
+    opacity:1!important;
+    clip-path:none!important;
+    white-space:normal!important;
+    text-align:left!important;
+  }
+  html body header.site-header .nav-shell a.brand .brand-text > span::before,
+  html body header.site-header .nav-shell a.brand .brand-text > span::after{
+    content:none!important;
+    display:none!important;
+  }
+  html body header.site-header .nav-shell a.brand .brand-text > span .brand-subtitle{
+    display:block!important;
+    position:static!important;
+    margin-top:4px!important;
+    height:auto!important;
+    max-height:none!important;
+    overflow:visible!important;
+    visibility:visible!important;
+    opacity:1!important;
+    white-space:normal!important;
+  }
+}
