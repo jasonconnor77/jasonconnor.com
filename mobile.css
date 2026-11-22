@@ -74,16 +74,16 @@
   }
 }
 
-/* 2026-11-22 mobile header correction.
-   The sticky full-size masthead obscured Career content as it scrolled; multiple
-   historical subtitle rules also clipped the final lines of the descriptor.
-   On phones, use one normal-flow masthead with its real intrinsic height. */
+/* Mobile header: remain sticky at a constant intrinsic height.
+   Full brand/subtitle text fits within the opaque navy header; Career job
+   headings scroll normally underneath it without overlaying one another. */
 @media(max-width:720px){
   html body header.site-header,
   html body header.site-header.scrolled{
-    position:relative!important;
+    position:-webkit-sticky!important;
+    position:sticky!important;
     inset:auto!important;
-    top:auto!important;
+    top:0!important;
     bottom:auto!important;
     width:100%!important;
     height:auto!important;
@@ -92,7 +92,8 @@
     background:#0C1B29!important;
     backdrop-filter:none!important;
     transition:none!important;
-    z-index:100!important;
+    isolation:isolate!important;
+    z-index:1000!important;
   }
 
   html body header.site-header .nav-shell{
