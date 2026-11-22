@@ -195,6 +195,11 @@
                margin .34s cubic-bezier(.22,1,.36,1)!important;
   }
   html body header.site-header .nav-shell a.brand .brand-text > span{
+    /* Keep the same wrapping width before and after consolidation.
+       Without this, "LEADER" can suddenly jump between lines mid-animation. */
+    width:calc(100vw - 210px)!important;
+    max-width:100%!important;
+    min-width:0!important;
     transition:margin .34s cubic-bezier(.22,1,.36,1)!important;
   }
   html body header.site-header .nav-shell a.brand .brand-text > span .brand-subtitle{
