@@ -21,39 +21,30 @@
     link.setAttribute('href', 'career.html');
   });
 
-  /* Header height is responsive (and shrinks on scroll). Keep each Career
-     employer/role heading below the visible header on mobile Safari. */
+  /* Mobile branding remains one constant size while scrolling.
+     Measure only for the open navigation drawer; never offset Career text. */
   const mobileHeaderQuery = window.matchMedia('(max-width:720px)');
-  const careerEmployers = [...document.querySelectorAll('.experience-block .experience-meta')];
-  const updateMobileStickyOffsets = () => {
-    if (!header || !mobileHeaderQuery.matches) return;
-    document.documentElement.style.setProperty(
-      '--jc-mobile-header-height', `${Math.ceil(header.getBoundingClientRect().height)}px`
-    );
-    careerEmployers.forEach(employer => {
-      employer.closest('.experience-block')?.style.setProperty(
-        '--jc-employer-height', `${Math.ceil(employer.getBoundingClientRect().height)}px`
-      );
-    });
-  };
-  if ('ResizeObserver' in window && header) {
-    const sizeObserver = new ResizeObserver(updateMobileStickyOffsets);
-    sizeObserver.observe(header);
-    careerEmployers.forEach(employer => sizeObserver.observe(employer));
-  }
-  window.addEventListener('resize', updateMobileStickyOffsets, { passive: true });
-  document.fonts?.ready?.then(updateMobileStickyOffsets);
-
   const updateHeader = () => {
     if (!header) return;
-    const shouldCompact = window.scrollY > 18;
-    if (header.classList.contains('scrolled') === shouldCompact) return;
-    header.classList.toggle('scrolled', shouldCompact);
-    requestAnimationFrame(updateMobileStickyOffsets);
+    if (mobileHeaderQuery.matches) {
+      header.classList.remove('scrolled');
+      document.documentElement.style.setProperty(
+        '--jc-mobile-header-height',
+        `${Math.ceil(header.getBoundingClientRect().height)}px`
+      );
+    } else {
+      header.classList.toggle('scrolled', window.scrollY > 18);
+    }
   };
+  if ('ResizeObserver' in window && header) {
+    new ResizeObserver(updateHeader).observe(header);
+  }
+  window.addEventListener('resize', updateHeader, { passive: true });
+  document.fonts?.ready?.then(updateHeader);
   updateHeader();
-  updateMobileStickyOffsets();
-  window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (!mobileHeaderQuery.matches) updateHeader();
+  }, { passive: true });
 
   const closeMenu = () => {
     nav?.classList.remove('open');
