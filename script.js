@@ -21,8 +21,38 @@
     link.setAttribute('href', 'career.html');
   });
 
-  const updateHeader = () => header?.classList.toggle('scrolled', window.scrollY > 18);
+  /* Header height is responsive (and shrinks on scroll). Keep each Career
+     employer/role heading below the visible header on mobile Safari. */
+  const mobileHeaderQuery = window.matchMedia('(max-width:720px)');
+  const careerEmployers = [...document.querySelectorAll('.experience-block .experience-meta')];
+  const updateMobileStickyOffsets = () => {
+    if (!header || !mobileHeaderQuery.matches) return;
+    document.documentElement.style.setProperty(
+      '--jc-mobile-header-height', `${Math.ceil(header.getBoundingClientRect().height)}px`
+    );
+    careerEmployers.forEach(employer => {
+      employer.closest('.experience-block')?.style.setProperty(
+        '--jc-employer-height', `${Math.ceil(employer.getBoundingClientRect().height)}px`
+      );
+    });
+  };
+  if ('ResizeObserver' in window && header) {
+    const sizeObserver = new ResizeObserver(updateMobileStickyOffsets);
+    sizeObserver.observe(header);
+    careerEmployers.forEach(employer => sizeObserver.observe(employer));
+  }
+  window.addEventListener('resize', updateMobileStickyOffsets, { passive: true });
+  document.fonts?.ready?.then(updateMobileStickyOffsets);
+
+  const updateHeader = () => {
+    if (!header) return;
+    const shouldCompact = window.scrollY > 18;
+    if (header.classList.contains('scrolled') === shouldCompact) return;
+    header.classList.toggle('scrolled', shouldCompact);
+    requestAnimationFrame(updateMobileStickyOffsets);
+  };
   updateHeader();
+  updateMobileStickyOffsets();
   window.addEventListener('scroll', updateHeader, { passive: true });
 
   const closeMenu = () => {
