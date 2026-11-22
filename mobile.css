@@ -39,3 +39,55 @@
     width:100%!important;
   }
 }
+
+/* Mobile navigation: compact the approved header after scrolling.
+   Measure offsets from the rendered header, not fixed pixel guesses. */
+@media (max-width:720px){
+  html body .site-header.scrolled{
+    background:#0C1B29!important;
+  }
+  html body .site-header.scrolled .nav-shell{
+    padding:8px 0!important;
+    column-gap:10px!important;
+  }
+  html body .site-header.scrolled .nav-shell .brand{
+    grid-template-columns:58px minmax(0,1fr)!important;
+    gap:10px!important;
+  }
+  html body .site-header.scrolled .nav-shell .brand .brand-monogram{
+    width:58px!important;
+    height:42px!important;
+    min-width:58px!important;
+    min-height:42px!important;
+    flex:0 0 58px!important;
+  }
+  html body .site-header.scrolled .nav-shell .brand .brand-text strong{
+    font-size:clamp(16px,4.6vw,20px)!important;
+    margin:0 0 3px!important;
+    letter-spacing:.025em!important;
+  }
+  html body .site-header.scrolled .nav-shell .brand .brand-text > span{
+    margin:0!important;
+    font-size:10px!important;
+    line-height:1.2!important;
+  }
+  html body .site-header.scrolled .nav-shell .brand .brand-text > span .brand-subtitle{
+    display:none!important;
+  }
+
+  /* The menu always begins below the current header height. */
+  html body .site-header .nav{
+    top:var(--jc-mobile-header-height,150px)!important;
+  }
+
+  /* Employer and role labels stay visible, never behind the header. */
+  html body #main .experience-block .experience-meta{
+    top:calc(var(--jc-mobile-header-height,150px) + 6px)!important;
+  }
+  html body #main .experience-block .role-head{
+    top:calc(var(--jc-mobile-header-height,150px) + var(--jc-employer-height,80px) + 6px)!important;
+  }
+  html{
+    scroll-padding-top:calc(var(--jc-mobile-header-height,150px) + 12px);
+  }
+}
