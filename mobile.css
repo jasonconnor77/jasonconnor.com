@@ -189,105 +189,80 @@
   }
 }
 
-/* Move the bronze mobile divider up with the disappearing tertiary tagline.
-   Logo, name, and PRODUCTION & MATERIALS LEADER never shrink. */
+/* Uniform iPhone masthead: JC logo, name, and hamburger never move.
+   Only the Scheduling descriptor collapses and the bronze divider follows.
+   Keep the body's expanded-height spacer constant while scrolling. */
 @media(max-width:720px){
-  /* Keep scroll position stable as the visible masthead gets shorter. */
+  html,
+  html body{
+    background-color:var(--navy950)!important;
+  }
   html body{
     padding-top:var(--jc-mobile-header-expanded-height,140px)!important;
   }
-  html body header.site-header .nav-shell{
+  html body header.site-header,
+  html body header.site-header.scrolled,
+  html body header.site-header.subtitle-muted{
+    position:fixed!important;
+    top:0!important;
+    inset:0 0 auto 0!important;
+    background:#0C1B29!important;
+    border-bottom:2px solid #B87333!important;
+    transition:none!important;
+    z-index:1000!important;
+  }
+  /* Fixed top positioning rather than centering against changing content. */
+  html body header.site-header .nav-shell,
+  html body header.site-header.subtitle-muted .nav-shell{
+    align-items:start!important;
+    padding:16px 0 18px!important;
     transition:none!important;
   }
-  html body header.site-header.subtitle-muted .nav-shell{
-    padding-bottom:11px!important;
+  html body header.site-header .nav-shell a.brand{
+    align-items:start!important;
+  }
+  html body header.site-header .nav-shell a.brand .brand-monogram{
+    align-self:start!important;
+    transform:none!important;
+    transition:none!important;
+  }
+  html body header.site-header .nav-shell a.brand .brand-text{
+    align-self:start!important;
+  }
+  html body header.site-header .nav-shell a.brand .brand-text strong{
+    transform:scale(.70)!important;
+    transform-origin:left center!important;
+    transition:none!important;
+  }
+  html body header.site-header .nav-shell .menu-toggle{
+    align-self:start!important;
+    margin-top:14px!important;
+    transition:none!important;
   }
   html body header.site-header .nav-shell a.brand .brand-text > span .brand-subtitle{
     display:block!important;
+    position:static!important;
     height:auto!important;
     max-height:44px!important;
     margin-top:4px!important;
     overflow:hidden!important;
-    opacity:1!important;
     visibility:visible!important;
-    transform:translateY(0)!important;
+    opacity:1!important;
+    transform:none!important;
     transition:none!important;
   }
   html body header.site-header.subtitle-muted .nav-shell a.brand .brand-text > span .brand-subtitle{
     max-height:0!important;
     margin-top:0!important;
     opacity:0!important;
-    transform:none!important;
-    pointer-events:none!important;
-  }
-}
-@media(max-width:720px) and (prefers-reduced-motion:reduce){
-  html body header.site-header .nav-shell,
-  html body header.site-header .nav-shell a.brand .brand-text > span .brand-subtitle{
-    transition:none!important;
-  }
-}
-
-/* Targeted iPhone hamburger clearance after restoring the preceding header.
-   Preserve its full-size logo, subtitle fade, and moving bronze divider.
-   Reduce only the rendered name width to keep its end off the menu bars. */
-@media(max-width:720px){
-  html body header.site-header .nav-shell a.brand .brand-text strong{
-    transform:scale(.70)!important;
-    transform-origin:left center!important;
-  }
-}
-
-
-/* Keep the reserved fixed-header space the same navy as the header and
-   current-page strip. The spacer intentionally stays the expanded height to
-   avoid a document jump when the Scheduling subtitle collapses on scroll. */
-@media(max-width:720px){
-  html,
-  html body{
-    background-color:var(--navy950)!important;
-  }
-}
-
-
-/* STATIC iPHONE HEADER GEOMETRY — remove all content jumps.
-   The subtitle may visually disappear on scroll, but it retains its space:
-   the header, bronze divider, body spacer, and Career sticky offsets do not
-   change size or position. This intentionally supersedes prior collapse rules. */
-@media(max-width:720px){
-  html body{
-    padding-top:var(--jc-mobile-header-height,140px)!important;
-  }
-  html body header.site-header,
-  html body header.site-header.scrolled,
-  html body header.site-header.subtitle-muted{
-    top:0!important;
-    transition:none!important;
-  }
-  html body header.site-header .nav-shell,
-  html body header.site-header.subtitle-muted .nav-shell{
-    padding:16px 0 18px!important;
-    transition:none!important;
-  }
-  html body header.site-header .nav-shell a.brand .brand-text > span .brand-subtitle,
-  html body header.site-header.subtitle-muted .nav-shell a.brand .brand-text > span .brand-subtitle{
-    display:block!important;
-    position:static!important;
-    height:auto!important;
-    min-height:0!important;
-    max-height:none!important;
-    margin-top:4px!important;
-    overflow:visible!important;
-    transform:none!important;
-    transition:none!important;
-  }
-  html body header.site-header .nav-shell a.brand .brand-text > span .brand-subtitle{
-    opacity:1!important;
-    visibility:visible!important;
-  }
-  html body header.site-header.subtitle-muted .nav-shell a.brand .brand-text > span .brand-subtitle{
-    opacity:0!important;
     visibility:hidden!important;
     pointer-events:none!important;
+  }
+  /* Only the bottom edge changes: logo/name/menu retain the same position. */
+  html body header.site-header.subtitle-muted .nav-shell{
+    padding-bottom:7px!important;
+  }
+  html body header.site-header .nav{
+    top:var(--jc-mobile-header-height,140px)!important;
   }
 }

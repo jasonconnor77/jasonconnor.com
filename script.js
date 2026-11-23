@@ -21,12 +21,30 @@
     link.setAttribute('href', 'career.html');
   });
 
-  /* Never change the mobile header's geometry on scroll. The Scheduling
-     tagline can hide visually, but its layout box and bronze divider remain
-     fixed. Measure header height only when its actual dimensions change. */
+  /* The mobile brand identity never changes position or size.
+     Only the Scheduling descriptor and bottom edge collapse on scroll.
+     Preserve one measured expanded-height body spacer; track the header's
+     current height for the menu drawer and Career's pinned company/role. */
   const mobileHeaderQuery = window.matchMedia('(max-width:720px)');
   let subtitleMuted = false;
+  let expandedHeaderHeight = 0;
   let measureFrame = 0;
+  let previousWidth = window.innerWidth;
+
+  const measureHeader = () => {
+    measureFrame = 0;
+    if (!header || !mobileHeaderQuery.matches) return;
+    const height = Math.ceil(header.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--jc-mobile-header-height', `${height}px`);
+    if (!subtitleMuted && (expandedHeaderHeight === 0 || window.scrollY <= 1) &&
+        Math.abs(height - expandedHeaderHeight) > 1) {
+      expandedHeaderHeight = height;
+      document.documentElement.style.setProperty('--jc-mobile-header-expanded-height', `${height}px`);
+    }
+  };
+  const queueHeaderMeasure = () => {
+    if (!measureFrame) measureFrame = requestAnimationFrame(measureHeader);
+  };
   const updateSubtitle = () => {
     if (!header) return;
     if (!mobileHeaderQuery.matches) {
@@ -37,41 +55,50 @@
     const scroll = Math.max(0, window.scrollY || 0);
     if (!subtitleMuted && scroll > 110) subtitleMuted = true;
     else if (subtitleMuted && scroll < 40) subtitleMuted = false;
-    header.classList.toggle('subtitle-muted', subtitleMuted);
-  };
-  const measureHeader = () => {
-    measureFrame = 0;
-    if (!header || !mobileHeaderQuery.matches) return;
-    const height = Math.ceil(header.getBoundingClientRect().height);
-    const current = parseFloat(document.documentElement.style.getPropertyValue('--jc-mobile-header-height'));
-    if (!Number.isFinite(current) || Math.abs(height - current) > 1) {
-      document.documentElement.style.setProperty('--jc-mobile-header-height', `${height}px`);
+    const changed = header.classList.contains('subtitle-muted') !== subtitleMuted;
+    if (changed) {
+      header.classList.toggle('subtitle-muted', subtitleMuted);
+      queueHeaderMeasure();
     }
-  };
-  const queueHeaderMeasure = () => {
-    if (!measureFrame) measureFrame = requestAnimationFrame(measureHeader);
   };
   const updateHeader = () => {
     if (!header) return;
     if (mobileHeaderQuery.matches) {
-      header.classList.remove('mobile-compact', 'scrolled');
+      header.classList.remove('mobile-compact','scrolled');
+      if (expandedHeaderHeight === 0) measureHeader();
       updateSubtitle();
       queueHeaderMeasure();
     } else {
-      header.classList.remove('mobile-compact', 'subtitle-muted');
+      header.classList.remove('mobile-compact','subtitle-muted');
       header.classList.toggle('scrolled', window.scrollY > 18);
     }
   };
   if ('ResizeObserver' in window && header) {
     new ResizeObserver(queueHeaderMeasure).observe(header);
   }
-  window.addEventListener('resize', updateHeader, {passive:true});
+  window.addEventListener('resize', () => {
+    if (mobileHeaderQuery.matches && window.innerWidth !== previousWidth) {
+      subtitleMuted = false;
+      header?.classList.remove('subtitle-muted');
+      expandedHeaderHeight = 0;
+    }
+    previousWidth = window.innerWidth;
+    updateHeader();
+  }, {passive:true});
   window.addEventListener('scroll', () => {
     if (mobileHeaderQuery.matches) updateSubtitle();
     else updateHeader();
   }, {passive:true});
-  mobileHeaderQuery.addEventListener?.('change', updateHeader);
-  document.fonts?.ready?.then(queueHeaderMeasure);
+  mobileHeaderQuery.addEventListener?.('change', () => {
+    subtitleMuted = false;
+    expandedHeaderHeight = 0;
+    header?.classList.remove('subtitle-muted');
+    updateHeader();
+  });
+  document.fonts?.ready?.then(() => {
+    if (!subtitleMuted && mobileHeaderQuery.matches) expandedHeaderHeight = 0;
+    queueHeaderMeasure();
+  });
   updateHeader();
 
   const closeMenu = () => {
