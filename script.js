@@ -21,20 +21,38 @@
     link.setAttribute('href', 'career.html');
   });
 
-  /* On phones the full-size header never shrinks.
-     Measure its actual rendered height for the document spacer, menu drawer,
-     and Career company/title sticky offsets. Desktop scrolling is unchanged. */
+  /* Full-size mobile header stays fixed. Hide only the tertiary tagline
+     with opacity while scrolling; never change the header's geometry. */
   const mobileHeaderQuery = window.matchMedia('(max-width:720px)');
+  let subtitleMuted = false;
+
+  const updateSubtitle = () => {
+    if (!header) return;
+    if (!mobileHeaderQuery.matches) {
+      subtitleMuted = false;
+      header.classList.remove('subtitle-muted');
+      return;
+    }
+    const scroll = Math.max(0, window.scrollY || 0);
+    // Hysteresis avoids rapid fading in and out near the threshold.
+    if (!subtitleMuted && scroll > 110) subtitleMuted = true;
+    else if (subtitleMuted && scroll < 40) subtitleMuted = false;
+    header.classList.toggle('subtitle-muted', subtitleMuted);
+  };
+
   const updateHeader = () => {
     if (!header) return;
     if (mobileHeaderQuery.matches) {
       header.classList.remove('mobile-compact', 'scrolled');
-      const height = Math.ceil(header.getBoundingClientRect().height);
-      document.documentElement.style.setProperty('--jc-mobile-header-height', `${height}px`);
+      document.documentElement.style.setProperty(
+        '--jc-mobile-header-height',
+        `${Math.ceil(header.getBoundingClientRect().height)}px`
+      );
     } else {
       header.classList.remove('mobile-compact');
       header.classList.toggle('scrolled', window.scrollY > 18);
     }
+    updateSubtitle();
   };
   if ('ResizeObserver' in window && header) {
     new ResizeObserver(() => {
@@ -43,7 +61,8 @@
   }
   window.addEventListener('resize', updateHeader, { passive: true });
   window.addEventListener('scroll', () => {
-    if (!mobileHeaderQuery.matches) updateHeader();
+    if (mobileHeaderQuery.matches) updateSubtitle();
+    else updateHeader();
   }, { passive: true });
   mobileHeaderQuery.addEventListener?.('change', updateHeader);
   document.fonts?.ready?.then(updateHeader);
