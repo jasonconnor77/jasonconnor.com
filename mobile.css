@@ -231,9 +231,9 @@
   }
 }
 
-/* Targeted iPhone hamburger clearance after reverting the permanent compact
-   redesign. Preserve the original logo, spacing, subtitle and scroll behavior.
-   Only scale the name enough to leave air before the menu bars. */
+/* Targeted iPhone hamburger clearance after restoring the preceding header.
+   Preserve its full-size logo, subtitle fade, and moving bronze divider.
+   Reduce only the rendered name width to keep its end off the menu bars. */
 @media(max-width:720px){
   html body header.site-header .nav-shell a.brand .brand-text strong{
     transform:scale(.70)!important;
