@@ -17,10 +17,18 @@
   html body:has(.nav a.active[href="/results"]) #main::before,
   html body:has(.nav a.active[href="/results/"]) #main::before{content:"RESULTS"!important}
   html body:has(.nav a.active[href="experience.html"]) #main::before,
-  html body:has(.nav a.active[href="career.html"]) #main::before{content:"CAREER"!important}
-  html body:has(.nav a.active[href="systems.html"]) #main::before{content:"SYSTEMS"!important}
-  html body:has(.nav a.active[href="about.html"]) #main::before{content:"ABOUT"!important}
-  html body:has(.nav a.active[href="contact.html"]) #main::before{content:"CONTACT"!important}
+  html body:has(.nav a.active[href="career.html"]) #main::before,
+  html body:has(.nav a.active[href="/career"]) #main::before,
+  html body:has(.nav a.active[href="/career/"]) #main::before{content:"CAREER"!important}
+  html body:has(.nav a.active[href="systems.html"]) #main::before,
+  html body:has(.nav a.active[href="/systems"]) #main::before,
+  html body:has(.nav a.active[href="/systems/"]) #main::before{content:"SYSTEMS"!important}
+  html body:has(.nav a.active[href="about.html"]) #main::before,
+  html body:has(.nav a.active[href="/about"]) #main::before,
+  html body:has(.nav a.active[href="/about/"]) #main::before{content:"ABOUT"!important}
+  html body:has(.nav a.active[href="contact.html"]) #main::before,
+  html body:has(.nav a.active[href="/contact"]) #main::before,
+  html body:has(.nav a.active[href="/contact/"]) #main::before{content:"CONTACT"!important}
 
   /* SHARED HERO TYPOGRAPHY — consistent across Home and every interior page. */
   html body .hero .display,
