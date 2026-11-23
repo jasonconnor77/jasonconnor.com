@@ -35,7 +35,11 @@
     if (!header || !mobileHeaderQuery.matches) return;
     const height = Math.ceil(header.getBoundingClientRect().height);
     document.documentElement.style.setProperty('--jc-mobile-header-height', `${height}px`);
-    if (!subtitleMuted && expandedHeaderHeight === 0) {
+    // Reconcile the spacer whenever the fully expanded header is at the top.
+    // Fonts and iPhone viewport settling can change its intrinsic height after
+    // the first measurement; leave the spacer untouched during scrolling.
+    if (!subtitleMuted && (expandedHeaderHeight === 0 || window.scrollY <= 1) &&
+        Math.abs(expandedHeaderHeight - height) > 1) {
       expandedHeaderHeight = height;
       document.documentElement.style.setProperty('--jc-mobile-header-expanded-height', `${height}px`);
     }
