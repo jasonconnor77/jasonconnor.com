@@ -240,3 +240,14 @@
     transform-origin:left center!important;
   }
 }
+
+
+/* Keep the reserved fixed-header space the same navy as the header and
+   current-page strip. The spacer intentionally stays the expanded height to
+   avoid a document jump when the Scheduling subtitle collapses on scroll. */
+@media(max-width:720px){
+  html,
+  html body{
+    background-color:var(--navy950)!important;
+  }
+}
