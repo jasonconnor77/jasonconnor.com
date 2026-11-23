@@ -188,3 +188,24 @@
     scroll-padding-top:calc(var(--jc-mobile-header-height,140px) + 10px);
   }
 }
+
+/* Show only the first two brand tiers after scrolling.
+   Keep every dimension fixed: only fade/translate the tertiary subtitle,
+   so the masthead and Career sticky offsets never move. */
+@media(max-width:720px){
+  html body header.site-header .nav-shell a.brand .brand-text > span .brand-subtitle{
+    opacity:1!important;
+    transform:translateY(0)!important;
+    transition:opacity .3s ease, transform .3s ease!important;
+  }
+  html body header.site-header.subtitle-muted .nav-shell a.brand .brand-text > span .brand-subtitle{
+    opacity:0!important;
+    transform:translateY(-4px)!important;
+    pointer-events:none!important;
+  }
+}
+@media(max-width:720px) and (prefers-reduced-motion:reduce){
+  html body header.site-header .nav-shell a.brand .brand-text > span .brand-subtitle{
+    transition:none!important;
+  }
+}
