@@ -21,80 +21,41 @@
     link.setAttribute('href', 'career.html');
   });
 
-  /* On mobile, only the tertiary tagline and bottom padding collapse.
-     Hold one expanded-size page spacer to prevent layout jumping, while
-     Career's pinned company and role follow the current header height. */
+  /* Mobile header is always compact and includes all three identity lines.
+     Measure only its natural height for the fixed-header spacer, menu drawer,
+     and the Career page's pinned employer/role headings. */
   const mobileHeaderQuery = window.matchMedia('(max-width:720px)');
-  let subtitleMuted = false;
-  let expandedHeaderHeight = 0;
-  let previousWidth = window.innerWidth;
-  let measureFrame = 0;
-
-  const measureHeader = () => {
-    measureFrame = 0;
-    if (!header || !mobileHeaderQuery.matches) return;
-    const height = Math.ceil(header.getBoundingClientRect().height);
-    document.documentElement.style.setProperty('--jc-mobile-header-height', `${height}px`);
-    if (!subtitleMuted && expandedHeaderHeight === 0) {
-      expandedHeaderHeight = height;
-      document.documentElement.style.setProperty('--jc-mobile-header-expanded-height', `${height}px`);
-    }
-  };
-  const scheduleHeaderMeasure = () => {
-    if (!measureFrame) measureFrame = requestAnimationFrame(measureHeader);
-  };
-  const updateSubtitle = () => {
-    if (!header) return;
-    if (!mobileHeaderQuery.matches) {
-      subtitleMuted = false;
-      header.classList.remove('subtitle-muted');
-      return;
-    }
-    const scroll = Math.max(0, window.scrollY || 0);
-    // Different thresholds on the way down/up prevent flicker.
-    if (!subtitleMuted && scroll > 110) subtitleMuted = true;
-    else if (subtitleMuted && scroll < 40) subtitleMuted = false;
-    header.classList.toggle('subtitle-muted', subtitleMuted);
-    scheduleHeaderMeasure();
-  };
+  let headerMeasureFrame = 0;
   const updateHeader = () => {
     if (!header) return;
     if (mobileHeaderQuery.matches) {
-      header.classList.remove('mobile-compact', 'scrolled');
-      measureHeader();
-      updateSubtitle();
+      header.classList.remove('subtitle-muted','mobile-compact','scrolled');
+      document.documentElement.style.setProperty(
+        '--jc-mobile-header-height',
+        `${Math.ceil(header.getBoundingClientRect().height)}px`
+      );
     } else {
-      header.classList.remove('mobile-compact', 'subtitle-muted');
+      header.classList.remove('subtitle-muted','mobile-compact');
       header.classList.toggle('scrolled', window.scrollY > 18);
+    }
+  };
+  const scheduleHeaderMeasure = () => {
+    if (!headerMeasureFrame) {
+      headerMeasureFrame = requestAnimationFrame(() => {
+        headerMeasureFrame = 0;
+        updateHeader();
+      });
     }
   };
   if ('ResizeObserver' in window && header) {
     new ResizeObserver(scheduleHeaderMeasure).observe(header);
   }
-  window.addEventListener('resize', () => {
-    if (mobileHeaderQuery.matches && window.innerWidth !== previousWidth) {
-      header?.classList.remove('subtitle-muted');
-      subtitleMuted = false;
-      expandedHeaderHeight = 0;
-      measureHeader();
-    }
-    previousWidth = window.innerWidth;
-    updateHeader();
-  }, { passive:true });
+  window.addEventListener('resize', scheduleHeaderMeasure, {passive:true});
   window.addEventListener('scroll', () => {
-    if (mobileHeaderQuery.matches) updateSubtitle();
-    else updateHeader();
-  }, { passive:true });
-  mobileHeaderQuery.addEventListener?.('change', () => {
-    subtitleMuted = false;
-    header?.classList.remove('subtitle-muted');
-    expandedHeaderHeight = 0;
-    updateHeader();
-  });
-  document.fonts?.ready?.then(() => {
-    if (mobileHeaderQuery.matches && !subtitleMuted) expandedHeaderHeight = 0;
-    scheduleHeaderMeasure();
-  });
+    if (!mobileHeaderQuery.matches) updateHeader();
+  }, {passive:true});
+  mobileHeaderQuery.addEventListener?.('change', scheduleHeaderMeasure);
+  document.fonts?.ready?.then(scheduleHeaderMeasure);
   updateHeader();
 
   const closeMenu = () => {
