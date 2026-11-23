@@ -189,22 +189,43 @@
   }
 }
 
-/* Show only the first two brand tiers after scrolling.
-   Keep every dimension fixed: only fade/translate the tertiary subtitle,
-   so the masthead and Career sticky offsets never move. */
+/* Move the bronze mobile divider up with the disappearing tertiary tagline.
+   Logo, name, and PRODUCTION & MATERIALS LEADER never shrink. */
 @media(max-width:720px){
+  /* Keep scroll position stable as the visible masthead gets shorter. */
+  html body{
+    padding-top:var(--jc-mobile-header-expanded-height,140px)!important;
+  }
+  html body header.site-header .nav-shell{
+    transition:padding-bottom .32s cubic-bezier(.22,1,.36,1)!important;
+  }
+  html body header.site-header.subtitle-muted .nav-shell{
+    padding-bottom:11px!important;
+  }
   html body header.site-header .nav-shell a.brand .brand-text > span .brand-subtitle{
+    display:block!important;
+    height:auto!important;
+    max-height:44px!important;
+    margin-top:4px!important;
+    overflow:hidden!important;
     opacity:1!important;
+    visibility:visible!important;
     transform:translateY(0)!important;
-    transition:opacity .3s ease, transform .3s ease!important;
+    transition:max-height .32s cubic-bezier(.22,1,.36,1),
+               margin-top .32s cubic-bezier(.22,1,.36,1),
+               opacity .24s ease,
+               transform .32s ease!important;
   }
   html body header.site-header.subtitle-muted .nav-shell a.brand .brand-text > span .brand-subtitle{
+    max-height:0!important;
+    margin-top:0!important;
     opacity:0!important;
     transform:translateY(-4px)!important;
     pointer-events:none!important;
   }
 }
 @media(max-width:720px) and (prefers-reduced-motion:reduce){
+  html body header.site-header .nav-shell,
   html body header.site-header .nav-shell a.brand .brand-text > span .brand-subtitle{
     transition:none!important;
   }
