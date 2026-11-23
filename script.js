@@ -21,79 +21,33 @@
     link.setAttribute('href', 'career.html');
   });
 
-  /* Mobile: scroll-independent document spacer, animated visual masthead.
-     Hysteresis prevents the compact/expanded state from flickering near
-     the threshold. The Career sticky offsets follow actual header height. */
+  /* On phones the full-size header never shrinks.
+     Measure its actual rendered height for the document spacer, menu drawer,
+     and Career company/title sticky offsets. Desktop scrolling is unchanged. */
   const mobileHeaderQuery = window.matchMedia('(max-width:720px)');
-  let mobileCompact = false;
-  let expandedHeaderHeight = 0;
-  let lastMobileWidth = window.innerWidth;
-  let heightFrame = 0;
-
-  const syncHeaderHeights = () => {
-    heightFrame = 0;
-    if (!header || !mobileHeaderQuery.matches) return;
-    const height = Math.ceil(header.getBoundingClientRect().height);
-    document.documentElement.style.setProperty('--jc-mobile-header-height', `${height}px`);
-    // Measure the expanded spacer once, never on each animation frame.
-    // Updating the spacer during expansion would move the entire page.
-    if (!mobileCompact && expandedHeaderHeight === 0) {
-      expandedHeaderHeight = height;
-      document.documentElement.style.setProperty('--jc-mobile-header-expanded-height', `${height}px`);
-    }
-  };
-  const scheduleHeaderHeightSync = () => {
-    if (!heightFrame) heightFrame = requestAnimationFrame(syncHeaderHeights);
-  };
   const updateHeader = () => {
     if (!header) return;
-    if (!mobileHeaderQuery.matches) {
-      mobileCompact = false;
+    if (mobileHeaderQuery.matches) {
+      header.classList.remove('mobile-compact', 'scrolled');
+      const height = Math.ceil(header.getBoundingClientRect().height);
+      document.documentElement.style.setProperty('--jc-mobile-header-height', `${height}px`);
+    } else {
       header.classList.remove('mobile-compact');
       header.classList.toggle('scrolled', window.scrollY > 18);
-      return;
     }
-    header.classList.remove('scrolled');
-    const scroll = Math.max(0, window.scrollY || 0);
-    // Only update after clearly crossing the threshold in either direction.
-    if (!mobileCompact && scroll > 125) mobileCompact = true;
-    else if (mobileCompact && scroll < 45) mobileCompact = false;
-    header.classList.toggle('mobile-compact', mobileCompact);
-    scheduleHeaderHeightSync();
   };
   if ('ResizeObserver' in window && header) {
-    new ResizeObserver(scheduleHeaderHeightSync).observe(header);
+    new ResizeObserver(() => {
+      if (mobileHeaderQuery.matches) updateHeader();
+    }).observe(header);
   }
-  window.addEventListener('scroll', updateHeader, { passive: true });
-  window.addEventListener('resize', () => {
-    const currentWidth = window.innerWidth;
-    if (mobileHeaderQuery.matches && currentWidth !== lastMobileWidth) {
-      mobileCompact = false;
-      header?.classList.remove('mobile-compact');
-      // On an actual width change (not Safari toolbar resizing), wait until
-      // the header's width/height transition settles to remeasure the spacer.
-      window.setTimeout(() => {
-        if (mobileHeaderQuery.matches && !mobileCompact) {
-          expandedHeaderHeight = 0;
-          scheduleHeaderHeightSync();
-        }
-      }, 400);
-    }
-    lastMobileWidth = currentWidth;
-    updateHeader();
+  window.addEventListener('resize', updateHeader, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (!mobileHeaderQuery.matches) updateHeader();
   }, { passive: true });
-  mobileHeaderQuery.addEventListener?.('change', () => {
-    mobileCompact = false;
-    header?.classList.remove('mobile-compact');
-    scheduleHeaderHeightSync();
-    updateHeader();
-  });
-  document.fonts?.ready?.then(() => {
-    if (!mobileCompact && mobileHeaderQuery.matches) expandedHeaderHeight = 0;
-    scheduleHeaderHeightSync();
-  });
+  mobileHeaderQuery.addEventListener?.('change', updateHeader);
+  document.fonts?.ready?.then(updateHeader);
   updateHeader();
-  syncHeaderHeights();
 
   const closeMenu = () => {
     nav?.classList.remove('open');
