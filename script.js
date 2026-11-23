@@ -21,32 +21,12 @@
     link.setAttribute('href', 'career.html');
   });
 
-  /* On mobile, only the tertiary tagline and bottom padding collapse.
-     Hold one expanded-size page spacer to prevent layout jumping, while
-     Career's pinned company and role follow the current header height. */
+  /* Never change the mobile header's geometry on scroll. The Scheduling
+     tagline can hide visually, but its layout box and bronze divider remain
+     fixed. Measure header height only when its actual dimensions change. */
   const mobileHeaderQuery = window.matchMedia('(max-width:720px)');
   let subtitleMuted = false;
-  let expandedHeaderHeight = 0;
-  let previousWidth = window.innerWidth;
   let measureFrame = 0;
-
-  const measureHeader = () => {
-    measureFrame = 0;
-    if (!header || !mobileHeaderQuery.matches) return;
-    const height = Math.ceil(header.getBoundingClientRect().height);
-    document.documentElement.style.setProperty('--jc-mobile-header-height', `${height}px`);
-    // Reconcile the spacer whenever the fully expanded header is at the top.
-    // Fonts and iPhone viewport settling can change its intrinsic height after
-    // the first measurement; leave the spacer untouched during scrolling.
-    if (!subtitleMuted && (expandedHeaderHeight === 0 || window.scrollY <= 1) &&
-        Math.abs(expandedHeaderHeight - height) > 1) {
-      expandedHeaderHeight = height;
-      document.documentElement.style.setProperty('--jc-mobile-header-expanded-height', `${height}px`);
-    }
-  };
-  const scheduleHeaderMeasure = () => {
-    if (!measureFrame) measureFrame = requestAnimationFrame(measureHeader);
-  };
   const updateSubtitle = () => {
     if (!header) return;
     if (!mobileHeaderQuery.matches) {
@@ -55,50 +35,43 @@
       return;
     }
     const scroll = Math.max(0, window.scrollY || 0);
-    // Different thresholds on the way down/up prevent flicker.
     if (!subtitleMuted && scroll > 110) subtitleMuted = true;
     else if (subtitleMuted && scroll < 40) subtitleMuted = false;
     header.classList.toggle('subtitle-muted', subtitleMuted);
-    scheduleHeaderMeasure();
+  };
+  const measureHeader = () => {
+    measureFrame = 0;
+    if (!header || !mobileHeaderQuery.matches) return;
+    const height = Math.ceil(header.getBoundingClientRect().height);
+    const current = parseFloat(document.documentElement.style.getPropertyValue('--jc-mobile-header-height'));
+    if (!Number.isFinite(current) || Math.abs(height - current) > 1) {
+      document.documentElement.style.setProperty('--jc-mobile-header-height', `${height}px`);
+    }
+  };
+  const queueHeaderMeasure = () => {
+    if (!measureFrame) measureFrame = requestAnimationFrame(measureHeader);
   };
   const updateHeader = () => {
     if (!header) return;
     if (mobileHeaderQuery.matches) {
       header.classList.remove('mobile-compact', 'scrolled');
-      measureHeader();
       updateSubtitle();
+      queueHeaderMeasure();
     } else {
       header.classList.remove('mobile-compact', 'subtitle-muted');
       header.classList.toggle('scrolled', window.scrollY > 18);
     }
   };
   if ('ResizeObserver' in window && header) {
-    new ResizeObserver(scheduleHeaderMeasure).observe(header);
+    new ResizeObserver(queueHeaderMeasure).observe(header);
   }
-  window.addEventListener('resize', () => {
-    if (mobileHeaderQuery.matches && window.innerWidth !== previousWidth) {
-      header?.classList.remove('subtitle-muted');
-      subtitleMuted = false;
-      expandedHeaderHeight = 0;
-      measureHeader();
-    }
-    previousWidth = window.innerWidth;
-    updateHeader();
-  }, { passive:true });
+  window.addEventListener('resize', updateHeader, {passive:true});
   window.addEventListener('scroll', () => {
     if (mobileHeaderQuery.matches) updateSubtitle();
     else updateHeader();
-  }, { passive:true });
-  mobileHeaderQuery.addEventListener?.('change', () => {
-    subtitleMuted = false;
-    header?.classList.remove('subtitle-muted');
-    expandedHeaderHeight = 0;
-    updateHeader();
-  });
-  document.fonts?.ready?.then(() => {
-    if (mobileHeaderQuery.matches && !subtitleMuted) expandedHeaderHeight = 0;
-    scheduleHeaderMeasure();
-  });
+  }, {passive:true});
+  mobileHeaderQuery.addEventListener?.('change', updateHeader);
+  document.fonts?.ready?.then(queueHeaderMeasure);
   updateHeader();
 
   const closeMenu = () => {
